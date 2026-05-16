@@ -1,0 +1,4 @@
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.AssemblyInfoInputs.cache
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.AssemblyInfo.cs
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.csproj.CoreCompileInputs.cache

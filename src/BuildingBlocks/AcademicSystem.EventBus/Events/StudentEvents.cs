@@ -1,3 +1,5 @@
+namespace AcademicSystem.EventBus;
+
 public class StudentCreatedEvent : IntegrationEvent
 {
     public Guid StudentId { get; }

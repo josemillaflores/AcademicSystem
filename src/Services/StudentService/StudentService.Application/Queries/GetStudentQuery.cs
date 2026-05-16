@@ -18,7 +18,7 @@ public class GetStudentQueryHandler : IRequestHandler<GetStudentQuery, StudentDt
 
     public async Task<StudentDto?> Handle(GetStudentQuery request, CancellationToken cancellationToken)
     {
-        var student = await _repository.GetByIdAsync(request.Id);
+        var student = await _repository.GetByIdAsync(request.Id, cancellationToken);
         return student == null ? null : _mapper.Map<StudentDto>(student);
     }
 }

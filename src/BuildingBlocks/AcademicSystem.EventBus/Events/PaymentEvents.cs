@@ -1,3 +1,5 @@
+namespace AcademicSystem.EventBus;
+
 public class PaymentCompletedEvent : IntegrationEvent
 {
     public Guid PaymentId { get; }

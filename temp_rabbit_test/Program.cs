@@ -1,0 +1,1 @@
+using System; using System.Linq; using System.Reflection; var a = Assembly.Load("RabbitMQ.Client"); foreach(var t in a.GetTypes().Where(t => t.Name.Contains("EventingBasicConsumer") || t.Name.Contains("BasicConsumer"))) Console.WriteLine(t.FullName);

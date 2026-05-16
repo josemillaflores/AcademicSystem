@@ -10,7 +10,7 @@ namespace AcademicSystem.EventBus;
 public class EventBusRabbitMQ : IEventBus, IDisposable
 {
     private readonly IConnection _connection;
-    private readonly IModel _channel;
+    private readonly IChannel _channel;
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<EventBusRabbitMQ> _logger;
     private readonly Dictionary<string, List<Type>> _handlers;
@@ -23,10 +23,10 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
         _handlers = new Dictionary<string, List<Type>>();
         
         var factory = new ConnectionFactory { HostName = "rabbitmq" };
-        _connection = factory.CreateConnection();
-        _channel = _connection.CreateModel();
+        _connection = factory.CreateConnectionAsync(CancellationToken.None).GetAwaiter().GetResult();
+        _channel = _connection.CreateChannelAsync(new CreateChannelOptions(publisherConfirmationsEnabled: false, publisherConfirmationTrackingEnabled: false), CancellationToken.None).GetAwaiter().GetResult();
         
-        _channel.ExchangeDeclare(_exchangeName, ExchangeType.Topic, durable: true);
+        _channel.ExchangeDeclareAsync(_exchangeName, ExchangeType.Topic, true, false, null, false, false, CancellationToken.None).GetAwaiter().GetResult();
     }
     
     public async Task PublishAsync<T>(T @event, CancellationToken cancellationToken = default) where T : IIntegrationEvent
@@ -35,13 +35,13 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
         var message = JsonConvert.SerializeObject(@event);
         var body = Encoding.UTF8.GetBytes(message);
         
-        _channel.BasicPublish(_exchangeName, eventName, null, body);
+        await _channel.BasicPublishAsync(_exchangeName, eventName, false, new ReadOnlyMemory<byte>(body), cancellationToken);
         _logger.LogInformation("Event published: {EventName} - {EventId}", eventName, @event.Id);
         
         await Task.CompletedTask;
     }
     
-    public Task SubscribeAsync<T, TH>() where T : IIntegrationEvent where TH : IIntegrationEventHandler<T>
+    public async Task SubscribeAsync<T, TH>() where T : IIntegrationEvent where TH : IIntegrationEventHandler<T>
     {
         var eventName = typeof(T).Name;
         
@@ -50,21 +50,19 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
         
         _handlers[eventName].Add(typeof(TH));
         
-        _channel.QueueDeclare(eventName, durable: true, exclusive: false, autoDelete: false);
-        _channel.QueueBind(eventName, _exchangeName, eventName);
+        _channel.QueueDeclareAsync(eventName, true, false, false, null, false, false, CancellationToken.None).GetAwaiter().GetResult();
+        _channel.QueueBindAsync(eventName, _exchangeName, eventName, null, false, CancellationToken.None).GetAwaiter().GetResult();
         
-        var consumer = new EventingBasicConsumer(_channel);
-        consumer.Received += async (sender, args) =>
+        var consumer = new AsyncEventingBasicConsumer(_channel);
+        consumer.ReceivedAsync += async (sender, args) =>
         {
             var body = args.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
             await ProcessEvent(eventName, message);
-            _channel.BasicAck(args.DeliveryTag, false);
+            await _channel.BasicAckAsync(args.DeliveryTag, false, CancellationToken.None);
         };
         
-        _channel.BasicConsume(eventName, false, consumer);
-        
-        return Task.CompletedTask;
+        await _channel.BasicConsumeAsync(eventName, false, consumer, CancellationToken.None);
     }
     
     private async Task ProcessEvent(string eventName, string message)
@@ -103,7 +101,7 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
     
     public void Dispose()
     {
-        _channel?.Close();
-        _connection?.Close();
+        _channel?.CloseAsync(CancellationToken.None).GetAwaiter().GetResult();
+        _connection?.CloseAsync(CancellationToken.None).GetAwaiter().GetResult();
     }
 }

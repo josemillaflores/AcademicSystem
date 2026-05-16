@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\AcademicSystem.Common\AcademicSystem.Common.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\AcademicSystem.EventBus\AcademicSystem.EventBus.csproj" />
+  </ItemGroup>
+
 </Project>

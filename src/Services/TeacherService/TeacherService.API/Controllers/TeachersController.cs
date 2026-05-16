@@ -1,13 +1,15 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TeacherService.Application.Commands;
-using TeacherService.Application.Queries;
 using TeacherService.Application.DTOs;
+using TeacherService.Application.Queries;
 
 namespace TeacherService.API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
+[Authorize(Policy = "Default")]
 [Produces("application/json")]
 public class TeachersController : ControllerBase
 {
@@ -25,11 +27,22 @@ public class TeachersController : ControllerBase
     /// </summary>
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<TeacherDto>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<TeacherDto>>> GetAll()
+    public async Task<ActionResult<IEnumerable<TeacherDto>>> GetAll(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10)
     {
-        var query = new GetAllTeachersQuery();
-        var teachers = await _mediator.Send(query);
-        return Ok(teachers);
+        var query = new GetAllTeachersQuery(page, pageSize);
+        var result = await _mediator.Send(query);
+        
+        Response.Headers.Append("X-Pagination", System.Text.Json.JsonSerializer.Serialize(new
+        {
+            result.Page,
+            result.PageSize,
+            result.TotalCount,
+            result.TotalPages
+        }));
+        
+        return Ok(result);
     }
 
     /// <summary>
@@ -44,7 +57,24 @@ public class TeachersController : ControllerBase
         var teacher = await _mediator.Send(query);
         
         if (teacher == null)
-            return NotFound($"Docente con ID {id} no encontrado");
+            return NotFound(new { error = $"Teacher with ID {id} not found" });
+            
+        return Ok(teacher);
+    }
+
+    /// <summary>
+    /// Obtiene un docente por número de empleado
+    /// </summary>
+    [HttpGet("by-number/{teacherNumber}")]
+    [ProducesResponseType(typeof(TeacherDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<TeacherDto>> GetByTeacherNumber(string teacherNumber)
+    {
+        var query = new GetTeacherByNumberQuery(teacherNumber);
+        var teacher = await _mediator.Send(query);
+        
+        if (teacher == null)
+            return NotFound(new { error = $"Teacher with number {teacherNumber} not found" });
             
         return Ok(teacher);
     }
@@ -57,17 +87,13 @@ public class TeachersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateTeacherCommand command)
     {
-        try
-        {
-            var teacherId = await _mediator.Send(command);
-            _logger.LogInformation("Docente creado con ID: {TeacherId}", teacherId);
-            return CreatedAtAction(nameof(GetById), new { id = teacherId }, teacherId);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al crear docente");
-            return BadRequest(new { error = ex.Message });
-        }
+        var result = await _mediator.Send(command);
+        
+        if (!result.IsSuccess)
+            return BadRequest(new { error = result.Error });
+            
+        _logger.LogInformation("Teacher created with ID: {TeacherId}", result.Data);
+        return CreatedAtAction(nameof(GetById), new { id = result.Data }, result.Data);
     }
 
     /// <summary>
@@ -80,14 +106,18 @@ public class TeachersController : ControllerBase
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateTeacherCommand command)
     {
         if (id != command.Id)
-            return BadRequest("El ID de la ruta no coincide con el ID del comando");
+            return BadRequest(new { error = "Route ID does not match command ID" });
 
         var result = await _mediator.Send(command);
         
         if (!result.IsSuccess)
-            return NotFound(result.Error);
+        {
+            if (result.Error.Contains("not found"))
+                return NotFound(new { error = result.Error });
+            return BadRequest(new { error = result.Error });
+        }
             
-        _logger.LogInformation("Docente actualizado: {TeacherId}", id);
+        _logger.LogInformation("Teacher updated: {TeacherId}", id);
         return NoContent();
     }
 
@@ -103,14 +133,14 @@ public class TeachersController : ControllerBase
         var result = await _mediator.Send(command);
         
         if (!result.IsSuccess)
-            return NotFound(result.Error);
+            return NotFound(new { error = result.Error });
             
-        _logger.LogInformation("Docente eliminado: {TeacherId}", id);
+        _logger.LogInformation("Teacher deleted: {TeacherId}", id);
         return NoContent();
     }
 
     /// <summary>
-    /// Asigna una especialidad a un docente
+    /// Agrega una especialidad a un docente
     /// </summary>
     [HttpPost("{id:guid}/specialties")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -118,14 +148,14 @@ public class TeachersController : ControllerBase
     public async Task<IActionResult> AddSpecialty(Guid id, [FromBody] AddTeacherSpecialtyCommand command)
     {
         if (id != command.TeacherId)
-            return BadRequest("El ID del docente no coincide");
+            return BadRequest(new { error = "Route ID does not match teacher ID" });
 
         var result = await _mediator.Send(command);
         
         if (!result.IsSuccess)
-            return BadRequest(result.Error);
+            return BadRequest(new { error = result.Error });
             
-        return Ok(new { message = "Especialidad agregada exitosamente" });
+        return Ok(new { message = "Specialty added successfully", specialtyId = result.Data });
     }
 
     /// <summary>
@@ -141,6 +171,23 @@ public class TeachersController : ControllerBase
     }
 
     /// <summary>
+    /// Elimina una especialidad de un docente
+    /// </summary>
+    [HttpDelete("{id:guid}/specialties/{specialtyId:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> RemoveSpecialty(Guid id, Guid specialtyId)
+    {
+        var command = new RemoveTeacherSpecialtyCommand(id, specialtyId);
+        var result = await _mediator.Send(command);
+        
+        if (!result.IsSuccess)
+            return NotFound(new { error = result.Error });
+            
+        return NoContent();
+    }
+
+    /// <summary>
     /// Asigna un curso a un docente
     /// </summary>
     [HttpPost("{id:guid}/assign-course")]
@@ -149,14 +196,26 @@ public class TeachersController : ControllerBase
     public async Task<IActionResult> AssignCourse(Guid id, [FromBody] AssignCourseToTeacherCommand command)
     {
         if (id != command.TeacherId)
-            return BadRequest("El ID del docente no coincide");
+            return BadRequest(new { error = "Route ID does not match teacher ID" });
 
         var result = await _mediator.Send(command);
         
         if (!result.IsSuccess)
-            return BadRequest(result.Error);
+            return BadRequest(new { error = result.Error });
             
-        return Ok(new { message = "Curso asignado exitosamente" });
+        return Ok(new { message = "Course assigned successfully" });
+    }
+
+    /// <summary>
+    /// Obtiene los cursos asignados a un docente
+    /// </summary>
+    [HttpGet("{id:guid}/courses")]
+    [ProducesResponseType(typeof(IEnumerable<TeacherCourseDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<TeacherCourseDto>>> GetAssignedCourses(Guid id)
+    {
+        var query = new GetTeacherCoursesQuery(id);
+        var courses = await _mediator.Send(query);
+        return Ok(courses);
     }
 
     /// <summary>
@@ -169,5 +228,17 @@ public class TeachersController : ControllerBase
         var query = new GetTeacherAcademicLoadQuery(id);
         var academicLoad = await _mediator.Send(query);
         return Ok(academicLoad);
+    }
+
+    /// <summary>
+    /// Obtiene estadísticas de docentes
+    /// </summary>
+    [HttpGet("statistics")]
+    [ProducesResponseType(typeof(TeacherStatisticsDto), StatusCodes.Status200OK)]
+    public async Task<ActionResult<TeacherStatisticsDto>> GetStatistics()
+    {
+        var query = new GetTeacherStatisticsQuery();
+        var statistics = await _mediator.Send(query);
+        return Ok(statistics);
     }
 }

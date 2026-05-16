@@ -1,0 +1,52 @@
+namespace CourseService.Application.DTOs;
+
+/// <summary>
+/// DTO para transferir información del curso
+/// </summary>
+public record CourseDto(
+    Guid Id,
+    string Code,
+    string Name,
+    string Description,
+    int Credits,
+    int TotalHours,
+    int MaxCapacity,
+    int CurrentEnrollment,
+    string Status,
+    bool HasAvailableSlots,
+    int AvailableSlots,
+    List<PrerequisiteDto> Prerequisites,
+    ScheduleDto? Schedule
+);
+
+/// <summary>
+/// DTO para horario del curso
+/// </summary>
+public record ScheduleDto(
+    string Day,
+    TimeSpan StartTime,
+    TimeSpan EndTime,
+    string Classroom
+);
+
+/// <summary>
+/// DTO para creación de curso
+/// </summary>
+public record CreateCourseDto(
+    string Code,
+    string Name,
+    string Description,
+    int Credits,
+    int TotalHours,
+    int MaxCapacity
+);
+
+/// <summary>
+/// DTO para actualización de curso
+/// </summary>
+public record UpdateCourseDto(
+    string Name,
+    string Description,
+    int Credits,
+    int MaxCapacity
+);

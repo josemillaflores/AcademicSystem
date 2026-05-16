@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EnrollmentService.Domain\EnrollmentService.Domain.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\AcademicSystem.EventBus\AcademicSystem.EventBus.csproj" />
   </ItemGroup>
 
   <ItemGroup>

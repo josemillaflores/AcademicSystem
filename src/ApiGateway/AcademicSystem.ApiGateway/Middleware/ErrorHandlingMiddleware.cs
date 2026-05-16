@@ -29,14 +29,29 @@ public class ErrorHandlingMiddleware
 
     private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
-        context.Response.ContentType = "application/json";
-        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+        context.Response.ContentType = "application/problem+json";
+        
+        var (statusCode, title, detail) = exception switch
+        {
+            UnauthorizedAccessException => 
+                ((int)HttpStatusCode.Unauthorized, "Unauthorized", exception.Message),
+            KeyNotFoundException => 
+                ((int)HttpStatusCode.NotFound, "Not Found", exception.Message),
+            ArgumentException or InvalidOperationException => 
+                ((int)HttpStatusCode.BadRequest, "Bad Request", exception.Message),
+            _ => 
+                ((int)HttpStatusCode.InternalServerError, "Internal Server Error", "An error occurred while processing your request")
+        };
 
+        context.Response.StatusCode = statusCode;
+        
         var response = new
         {
-            error = "An error occurred while processing your request",
-            detail = exception.Message,
-            timestamp = DateTime.UtcNow
+            title,
+            status = statusCode,
+            detail,
+            timestamp = DateTime.UtcNow,
+            traceId = context.TraceIdentifier
         };
 
         await context.Response.WriteAsync(JsonSerializer.Serialize(response));

@@ -1,0 +1,5 @@
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.csproj.AssemblyReference.cache
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.GeneratedMSBuildEditorConfig.editorconfig
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.AssemblyInfoInputs.cache
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.AssemblyInfo.cs
+d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.csproj.CoreCompileInputs.cache

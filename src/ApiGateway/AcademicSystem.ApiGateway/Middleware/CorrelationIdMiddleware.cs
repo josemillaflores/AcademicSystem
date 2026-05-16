@@ -13,7 +13,7 @@ public class CorrelationIdMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
-        var correlationId = context.Request.Headers["X-Correlation-Id"].FirstOrDefault();
+        string? correlationId = context.Request.Headers["X-Correlation-Id"].FirstOrDefault();
         
         if (string.IsNullOrEmpty(correlationId))
         {
@@ -26,7 +26,7 @@ public class CorrelationIdMiddleware
         using (_logger.BeginScope(new Dictionary<string, object>
         {
             ["CorrelationId"] = correlationId,
-            ["Path"] = context.Request.Path,
+            ["Path"] = context.Request.Path.ToString(),
             ["Method"] = context.Request.Method
         }))
         {

@@ -1,14 +1,25 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.RateLimiting;
-using Microsoft.IdentityModel.Tokens;
-using Serilog;
+using System.Reflection;
 using System.Text;
+using System.Text.Json;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Threading.RateLimiting;
 using Yarp.ReverseProxy.Configuration;
+using Yarp.ReverseProxy.Transforms;
+using Yarp.ReverseProxy.Transforms.Builder;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using AcademicSystem.ApiGateway.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar Serilog
+// ==========================================
+// 1. CONFIGURACIÓN DE SERILOG
+// ==========================================
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .Enrich.FromLogContext()
@@ -19,7 +30,9 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
-// Configurar JWT Authentication
+// ==========================================
+// 2. CONFIGURACIÓN DE AUTENTICACIÓN JWT
+// ==========================================
 var authConfig = builder.Configuration.GetSection("Auth");
 var secretKey = Encoding.UTF8.GetBytes(authConfig["SecretKey"] ?? "default-secret-key-32-chars-long-minimum!");
 
@@ -70,145 +83,157 @@ builder.Services.AddAuthorization(options =>
     });
 });
 
-// Configurar Rate Limiting
+// ==========================================
+// 3. CONFIGURACIÓN DE RATE LIMITING
+// ==========================================
 builder.Services.AddRateLimiter(options =>
 {
-    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
-        RateLimitPartition.GetFixedWindowLimiter(
-            partitionKey: httpContext.User.Identity?.Name ?? httpContext.Request.Headers.Host.ToString(),
-            factory: partition => new FixedWindowRateLimiterOptions
-            {
-                AutoReplenishment = true,
-                PermitLimit = builder.Configuration.GetValue<int>("RateLimiting:PermitLimit", 100),
-                QueueLimit = builder.Configuration.GetValue<int>("RateLimiting:QueueLimit", 10),
-                Window = TimeSpan.FromSeconds(builder.Configuration.GetValue<int>("RateLimiting:WindowInSeconds", 60))
-            }));
-    
-    options.AddPolicy("fixed", httpContext =>
-        RateLimitPartition.GetFixedWindowLimiter(
-            partitionKey: httpContext.User.Identity?.Name ?? httpContext.Request.Headers.Host.ToString(),
-            factory: partition => new FixedWindowRateLimiterOptions
-            {
-                AutoReplenishment = true,
-                PermitLimit = 100,
-                Window = TimeSpan.FromMinutes(1)
-            }));
-    
     options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
     options.OnRejected = async (context, token) =>
     {
         context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
         await context.HttpContext.Response.WriteAsync("Rate limit exceeded. Please try again later.", token);
     };
+    
+    options.AddFixedWindowLimiter("fixed", fixedOptions =>
+    {
+        fixedOptions.PermitLimit = builder.Configuration.GetValue<int>("RateLimiting:PermitLimit", 100);
+        fixedOptions.Window = TimeSpan.FromSeconds(builder.Configuration.GetValue<int>("RateLimiting:WindowInSeconds", 60));
+        fixedOptions.QueueLimit = builder.Configuration.GetValue<int>("RateLimiting:QueueLimit", 10);
+    });
 });
 
-// Configurar CORS
+// ==========================================
+// 4. CONFIGURACIÓN DE CORS
+// ==========================================
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("Development", policy =>
+    options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin()
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
-    
-    options.AddPolicy("Production", policy =>
-    {
-        policy.WithOrigins("https://academic-system.com", "https://admin.academic-system.com")
-              .AllowAnyMethod()
-              .AllowAnyHeader()
-              .WithExposedHeaders("X-Total-Count", "X-Page-Number");
-    });
 });
 
-// Configurar Health Checks
-builder.Services.AddHealthChecks()
-    .AddCheck<ApiGatewayHealthCheck>("gateway_health")
-    .AddUrlGroup(new Uri("http://studentservice:8080/health"), "student_service")
-    .AddUrlGroup(new Uri("http://teacherservice:8080/health"), "teacher_service")
-    .AddUrlGroup(new Uri("http://courseservice:8080/health"), "course_service")
-    .AddUrlGroup(new Uri("http://enrollmentservice:8080/health"), "enrollment_service")
-    .AddUrlGroup(new Uri("http://paymentservice:8080/health"), "payment_service");
-
-// Configurar YARP
+// ==========================================
+// 5. CONFIGURACIÓN DE YARP
+// ==========================================
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
-    .AddTransforms<CustomTransformProvider>();
+    .AddTransforms(transforms =>
+    {
+        // Agregar headers personalizados
+        transforms.AddRequestTransform(async transformContext =>
+        {
+            transformContext.ProxyRequest.Headers.Add("X-Forwarded-For", 
+                transformContext.HttpContext.Connection.RemoteIpAddress?.ToString());
+            transformContext.ProxyRequest.Headers.Add("X-Original-Host", 
+                transformContext.HttpContext.Request.Host.Value);
+            await ValueTask.CompletedTask;
+        });
+        
+        transforms.AddResponseTransform(async transformContext =>
+        {
+            var logger = transformContext.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+            logger.LogInformation("Proxy request: {Method} {Path} -> {StatusCode}", 
+                transformContext.HttpContext.Request.Method,
+                transformContext.HttpContext.Request.Path,
+                transformContext.ProxyResponse?.StatusCode);
+            await ValueTask.CompletedTask;
+        });
+    });
 
-// Configurar Swagger
+// ==========================================
+// 6. CONFIGURACIÓN DE SWAGGER
+// ==========================================
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Academic System API Gateway",
         Version = "v1",
-        Description = "API Gateway for Academic System Microservices",
-        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+        Description = "API Gateway for Academic System Microservices using YARP",
+        Contact = new OpenApiContact
         {
             Name = "Academic System Team",
             Email = "support@academic-system.com"
         }
     });
     
-    // Configurar JWT en Swagger
-    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Type = SecuritySchemeType.Http,
         Scheme = "Bearer",
         BearerFormat = "JWT",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        In = ParameterLocation.Header,
         Description = "Enter 'Bearer' followed by your token"
     });
     
-    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            new OpenApiSecurityScheme
             {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                Reference = new OpenApiReference
                 {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Type = ReferenceType.SecurityScheme,
                     Id = "Bearer"
                 }
             },
             Array.Empty<string>()
         }
     });
+    
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+        c.IncludeXmlComments(xmlPath);
 });
 
-// Configurar Response Compression
+// ==========================================
+// 7. CONFIGURACIÓN DE HEALTH CHECKS
+// ==========================================
+builder.Services.AddHealthChecks()
+    .AddCheck<ApiGatewayHealthCheck>("gateway_health", tags: new[] { "ready", "live" });
+
+// ==========================================
+// 8. CONFIGURACIÓN DE COMPRESIÓN
+// ==========================================
 builder.Services.AddResponseCompression(options =>
 {
     options.EnableForHttps = true;
-    options.MimeTypes = new[] { "application/json", "text/json" };
+    options.MimeTypes = new[] { "application/json", "text/json", "application/problem+json" };
 });
 
 var app = builder.Build();
 
-// Configure pipeline
+// ==========================================
+// 9. CONFIGURACIÓN DEL PIPELINE
+// ==========================================
+
+// Middlewares
+app.UseMiddleware<CorrelationIdMiddleware>();
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.UseCors("Development");
-}
-else
-{
-    app.UseCors("Production");
-    app.UseHsts();
 }
 
 app.UseSerilogRequestLogging();
 app.UseResponseCompression();
 app.UseRateLimiter();
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Configurar Health Checks endpoints
-app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+// Health Checks endpoints
+app.MapHealthChecks("/health", new HealthCheckOptions
 {
     AllowCachingResponses = false,
     ResponseWriter = async (context, report) =>
@@ -218,7 +243,9 @@ app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks
         {
             Status = report.Status.ToString(),
             Timestamp = DateTime.UtcNow,
-            Services = report.Entries.Select(e => new
+            Service = "API Gateway",
+            Environment = app.Environment.EnvironmentName,
+            Checks = report.Entries.Select(e => new
             {
                 Name = e.Key,
                 Status = e.Value.Status.ToString(),
@@ -226,39 +253,54 @@ app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks
                 Duration = e.Value.Duration
             })
         };
-        await context.Response.WriteAsJsonAsync(response);
+        await context.Response.WriteAsync(JsonSerializer.Serialize(response));
     }
 });
-
-// Endpoint de configuración de rutas (para debug)
-app.MapGet("/routes", (IProxyConfigProvider proxyConfig) =>
-{
-    var config = proxyConfig.GetConfig();
-    return Results.Ok(new
-    {
-        Routes = config.Routes.Select(r => new { r.RouteId, r.Match?.Path }),
-        Clusters = config.Clusters.Keys
-    });
-}).WithTags("Debug");
 
 // Endpoint de información del gateway
 app.MapGet("/info", () => Results.Ok(new
 {
     Name = "Academic System API Gateway",
     Version = "1.0.0",
-    Framework = "YARP",
-    Timestamp = DateTime.UtcNow
-})).WithTags("Info");
+    Framework = "YARP (Yet Another Reverse Proxy)",
+    Timestamp = DateTime.UtcNow,
+    Routes = app.Services.GetService<IProxyConfigProvider>()?.GetConfig().Routes.Count() ?? 0
+}));
 
-// Agregar después de app.UseAuthorization()
-app.UseMiddleware<CorrelationIdMiddleware>();
-app.UseMiddleware<ErrorHandlingMiddleware>()
+// Endpoint de rutas configuradas
+app.MapGet("/routes", (IProxyConfigProvider proxyConfig) =>
+{
+    var config = proxyConfig.GetConfig();
+    var routes = config.Routes.Select(r => new 
+    { 
+        r.RouteId, 
+        Path = r.Match?.Path,
+        ClusterId = r.ClusterId,
+        Methods = r.Match?.Methods
+    });
+    var clusters = config.Clusters.Select(c => new
+    {
+        c.ClusterId,
+        Destinations = c.Destinations?.Select(d => d.Value.Address) ?? Enumerable.Empty<string>()
+    });
+    
+    return Results.Ok(new { routes, clusters });
+});
+
 // Mapear YARP Reverse Proxy
 app.MapReverseProxy();
 
+// ==========================================
+// 10. INICIO DE LA APLICACIÓN
+// ==========================================
+Log.Information("Starting API Gateway");
+Log.Information("Environment: {Environment}", app.Environment.EnvironmentName);
+
 await app.RunAsync();
 
-// Health Check Implementation
+// ==========================================
+// 11. IMPLEMENTACIÓN DE HEALTH CHECK
+// ==========================================
 public class ApiGatewayHealthCheck : IHealthCheck
 {
     private readonly ILogger<ApiGatewayHealthCheck> _logger;
@@ -272,43 +314,13 @@ public class ApiGatewayHealthCheck : IHealthCheck
     {
         try
         {
-            _logger.LogInformation("API Gateway health check executed at {Time}", DateTime.UtcNow);
+            _logger.LogDebug("API Gateway health check executed at {Time}", DateTime.UtcNow);
             return Task.FromResult(HealthCheckResult.Healthy("API Gateway is running correctly"));
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Health check failed");
             return Task.FromResult(HealthCheckResult.Unhealthy("API Gateway is unhealthy", ex));
         }
     }
-}
-
-// Custom Transform Provider for YARP
-public class CustomTransformProvider : ITransformProvider
-{
-    public void Apply(TransformBuilderContext context)
-    {
-        // Agregar headers personalizados
-        context.AddRequestTransform(transformContext =>
-        {
-            transformContext.ProxyRequest.Headers.Add("X-Forwarded-For", 
-                transformContext.HttpContext.Connection.RemoteIpAddress?.ToString());
-            transformContext.ProxyRequest.Headers.Add("X-Original-Host", 
-                transformContext.HttpContext.Request.Host.Value);
-            return ValueTask.CompletedTask;
-        });
-        
-        // Agregar logging de requests
-        context.AddResponseTransform(transformContext =>
-        {
-            var logger = transformContext.HttpContext.RequestServices.GetRequiredService<ILogger<CustomTransformProvider>>();
-            logger.LogInformation("Proxy request: {Method} {Path} -> {StatusCode}", 
-                transformContext.HttpContext.Request.Method,
-                transformContext.HttpContext.Request.Path,
-                transformContext.ProxyResponse?.StatusCode);
-            return ValueTask.CompletedTask;
-        });
-    }
-    
-    public void ValidateRoute(TransformRouteValidationContext context) { }
-    public void ValidateCluster(TransformClusterValidationContext context) { }
 }

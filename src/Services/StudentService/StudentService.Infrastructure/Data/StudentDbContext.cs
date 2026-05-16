@@ -1,46 +1,51 @@
 using Microsoft.EntityFrameworkCore;
 using StudentService.Domain.Entities;
+using StudentService.Domain.ValueObjects;
+using StudentService.Infrastructure.Data.Configurations;
+using System.Reflection;
 
 namespace StudentService.Infrastructure.Data;
 
 public class StudentDbContext : DbContext
 {
     public DbSet<Student> Students { get; set; }
+    public DbSet<CourseEnrollment> CourseEnrollments { get; set; }
 
     public StudentDbContext(DbContextOptions<StudentDbContext> options) 
         : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Student>(entity =>
+        modelBuilder.ApplyConfiguration(new StudentConfiguration());
+        modelBuilder.ApplyConfiguration(new CourseEnrollmentConfiguration());
+        
+        base.OnModelCreating(modelBuilder);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.EnableSensitiveDataLogging();
+        optionsBuilder.EnableDetailedErrors();
+        base.OnConfiguring(optionsBuilder);
+    }
+
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        // Actualizar timestamps automáticamente
+        var entries = ChangeTracker
+            .Entries()
+            .Where(e => e.Entity is BaseEntity && 
+                       (e.State == EntityState.Added || e.State == EntityState.Modified));
+
+        foreach (var entityEntry in entries)
         {
-            entity.HasKey(e => e.Id);
-            
-            entity.OwnsOne(s => s.Name, name =>
+            if (entityEntry.State == EntityState.Added)
             {
-                name.Property(n => n.FirstName).HasColumnName("FirstName").IsRequired();
-                name.Property(n => n.LastName).HasColumnName("LastName").IsRequired();
-            });
-            
-            entity.OwnsOne(s => s.Email, email =>
-            {
-                email.Property(e => e.Value).HasColumnName("Email").IsRequired();
-            });
-            
-            entity.OwnsOne(s => s.StudentNumber, sn =>
-            {
-                sn.Property(n => n.Value).HasColumnName("StudentNumber").IsRequired();
-            });
-            
-            entity.OwnsOne(s => s.AcademicRecord, ar =>
-            {
-                ar.OwnsMany(a => a.Enrollments, enrollments =>
-                {
-                    enrollments.WithOwner().HasForeignKey("StudentId");
-                    enrollments.Property<int>("Id");
-                    enrollments.HasKey("Id");
-                });
-            });
-        });
+                ((BaseEntity)entityEntry.Entity).CreatedAt = DateTime.UtcNow;
+            }
+            ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.UtcNow;
+        }
+
+        return await base.SaveChangesAsync(cancellationToken);
     }
 }

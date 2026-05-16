@@ -1,0 +1,155 @@
+          },
+          "build": {
+>           "buildTransitive/net8.0/_._": {}
+          }
+        },
+          },
+          "build": {
+>           "buildTransitive/net8.0/_._": {}
+          }
+        },
+          },
+          "build": {
+>           "buildTransitive/net8.0/_._": {}
+          }
+        },
+          },
+          "build": {
+>           "buildTransitive/net8.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
+          }
+        },
+          },
+          "build": {
+>           "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
+          }
+        },
+          },
+          "build": {
+>           "buildTransitive/net8.0/_._": {}
+          }
+        },
+          }
+        },
+>       "RabbitMQ.Client/7.0.0": {
+          "type": "package",
+          "dependencies": {
+          },
+          "compile": {
+>           "lib/net8.0/RabbitMQ.Client.dll": {
+              "related": ".xml"
+            }
+          },
+          "runtime": {
+>           "lib/net8.0/RabbitMQ.Client.dll": {
+              "related": ".xml"
+            }
+          "type": "package",
+          "compile": {
+>           "lib/net8.0/System.Threading.RateLimiting.dll": {
+              "related": ".xml"
+            }
+          },
+          "runtime": {
+>           "lib/net8.0/System.Threading.RateLimiting.dll": {
+              "related": ".xml"
+            }
+          "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.targets",
+          "buildTransitive/net462/_._",
+>         "buildTransitive/net8.0/_._",
+          "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.targets",
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.dll",
+          "lib/net462/Microsoft.Extensions.DependencyInjection.dll",
+          "lib/net462/Microsoft.Extensions.DependencyInjection.xml",
+>         "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll",
+>         "lib/net8.0/Microsoft.Extensions.DependencyInjection.xml",
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.dll",
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.xml",
+          "buildTransitive/net461/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+          "buildTransitive/net462/_._",
+>         "buildTransitive/net8.0/_._",
+          "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+          "lib/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+          "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+          "lib/net462/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+>         "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+>         "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+          "lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+          "buildTransitive/net461/Microsoft.Extensions.Logging.targets",
+          "buildTransitive/net462/_._",
+>         "buildTransitive/net8.0/_._",
+          "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.targets",
+          "lib/net10.0/Microsoft.Extensions.Logging.dll",
+          "lib/net462/Microsoft.Extensions.Logging.dll",
+          "lib/net462/Microsoft.Extensions.Logging.xml",
+>         "lib/net8.0/Microsoft.Extensions.Logging.dll",
+>         "lib/net8.0/Microsoft.Extensions.Logging.xml",
+          "lib/net9.0/Microsoft.Extensions.Logging.dll",
+          "lib/net9.0/Microsoft.Extensions.Logging.xml",
+          "buildTransitive/net461/Microsoft.Extensions.Logging.Abstractions.targets",
+          "buildTransitive/net462/Microsoft.Extensions.Logging.Abstractions.targets",
+>         "buildTransitive/net8.0/Microsoft.Extensions.Logging.Abstractions.targets",
+          "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+          "buildTransitive/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+          "lib/net462/Microsoft.Extensions.Logging.Abstractions.dll",
+          "lib/net462/Microsoft.Extensions.Logging.Abstractions.xml",
+>         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+>         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml",
+          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll",
+          "lib/net9.0/Microsoft.Extensions.Logging.Abstractions.xml",
+          "buildTransitive/net461/Microsoft.Extensions.Options.targets",
+          "buildTransitive/net462/Microsoft.Extensions.Options.targets",
+>         "buildTransitive/net8.0/Microsoft.Extensions.Options.targets",
+          "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Options.targets",
+          "buildTransitive/netstandard2.0/Microsoft.Extensions.Options.targets",
+          "lib/net462/Microsoft.Extensions.Options.dll",
+          "lib/net462/Microsoft.Extensions.Options.xml",
+>         "lib/net8.0/Microsoft.Extensions.Options.dll",
+>         "lib/net8.0/Microsoft.Extensions.Options.xml",
+          "lib/net9.0/Microsoft.Extensions.Options.dll",
+          "lib/net9.0/Microsoft.Extensions.Options.xml",
+          "buildTransitive/net461/Microsoft.Extensions.Primitives.targets",
+          "buildTransitive/net462/_._",
+>         "buildTransitive/net8.0/_._",
+          "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Primitives.targets",
+          "lib/net10.0/Microsoft.Extensions.Primitives.dll",
+          "lib/net462/Microsoft.Extensions.Primitives.dll",
+          "lib/net462/Microsoft.Extensions.Primitives.xml",
+>         "lib/net8.0/Microsoft.Extensions.Primitives.dll",
+>         "lib/net8.0/Microsoft.Extensions.Primitives.xml",
+          "lib/net9.0/Microsoft.Extensions.Primitives.dll",
+          "lib/net9.0/Microsoft.Extensions.Primitives.xml",
+        ]
+      },
+>     "RabbitMQ.Client/7.0.0": {
+        "sha512": "8YJz22mOSMtkbIVuVSz2HbJwbpKwRoXQ1uqbczDUt1w1Ds8dxFs6dkV/oZ8AlTmkErZjtQelHv+oBu52ud00WA==",
+        "type": "package",
+>       "path": "rabbitmq.client/7.0.0",
+        "files": [
+          ".nupkg.metadata",
+          "README.md",
+          "icon.png",
+>         "lib/net8.0/RabbitMQ.Client.dll",
+>         "lib/net8.0/RabbitMQ.Client.xml",
+>         "lib/netstandard2.0/RabbitMQ.Client.dll",
+>         "lib/netstandard2.0/RabbitMQ.Client.xml",
+>         "rabbitmq.client.7.0.0.nupkg.sha512",
+>         "rabbitmq.client.nuspec"
+        ]
+      },
+          "lib/net7.0/System.Threading.RateLimiting.dll",
+          "lib/net7.0/System.Threading.RateLimiting.xml",
+>         "lib/net8.0/System.Threading.RateLimiting.dll",
+>         "lib/net8.0/System.Threading.RateLimiting.xml",
+          "lib/netstandard2.0/System.Threading.RateLimiting.dll",
+          "lib/netstandard2.0/System.Threading.RateLimiting.xml",
+        "Microsoft.Extensions.Logging >= 10.0.0",
+        "Newtonsoft.Json >= 13.0.3",
+>       "RabbitMQ.Client >= 7.0.0"
+      ]
+    },
+              "version": "[13.0.3, )"
+            },
+>           "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[7.0.0, )"

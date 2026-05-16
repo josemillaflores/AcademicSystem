@@ -1,13 +1,15 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using CourseService.Application.Commands;
-using CourseService.Application.Queries;
 using CourseService.Application.DTOs;
+using CourseService.Application.Queries;
 
 namespace CourseService.API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/v1/[controller]")]
+[Authorize(Policy = "Default")]
 [Produces("application/json")]
 public class CoursesController : ControllerBase
 {
@@ -21,15 +23,29 @@ public class CoursesController : ControllerBase
     }
 
     /// <summary>
-    /// Obtiene todos los cursos
+    /// Obtiene todos los cursos con paginación
     /// </summary>
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<CourseDto>>> GetAll()
+    [ProducesResponseType(typeof(PagedResult<CourseDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<PagedResult<CourseDto>>> GetAll(
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10,
+        [FromQuery] string? status = null,
+        [FromQuery] int? minCredits = null,
+        [FromQuery] int? maxCredits = null)
     {
-        var query = new GetAllCoursesQuery();
-        var courses = await _mediator.Send(query);
-        return Ok(courses);
+        var query = new GetAllCoursesQuery(page, pageSize, status, minCredits, maxCredits);
+        var result = await _mediator.Send(query);
+        
+        Response.Headers.Append("X-Pagination", System.Text.Json.JsonSerializer.Serialize(new
+        {
+            result.Page,
+            result.PageSize,
+            result.TotalCount,
+            result.TotalPages
+        }));
+        
+        return Ok(result);
     }
 
     /// <summary>
@@ -44,7 +60,7 @@ public class CoursesController : ControllerBase
         var course = await _mediator.Send(query);
         
         if (course == null)
-            return NotFound($"Curso con ID {id} no encontrado");
+            return NotFound(new { error = $"Course with ID {id} not found" });
             
         return Ok(course);
     }
@@ -61,7 +77,7 @@ public class CoursesController : ControllerBase
         var course = await _mediator.Send(query);
         
         if (course == null)
-            return NotFound($"Curso con código {code} no encontrado");
+            return NotFound(new { error = $"Course with code {code} not found" });
             
         return Ok(course);
     }
@@ -72,19 +88,21 @@ public class CoursesController : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateCourseCommand command)
     {
-        try
-        {
-            var courseId = await _mediator.Send(command);
-            _logger.LogInformation("Curso creado con ID: {CourseId}", courseId);
-            return CreatedAtAction(nameof(GetById), new { id = courseId }, courseId);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Error al crear curso");
-            return BadRequest(new { error = ex.Message });
-        }
+        // Verificar si el código ya existe
+        var codeExists = await _mediator.Send(new CheckCourseCodeExistsQuery(command.Code));
+        if (codeExists)
+            return Conflict(new { error = $"Course code {command.Code} already exists" });
+
+        var result = await _mediator.Send(command);
+        
+        if (!result.IsSuccess)
+            return BadRequest(new { error = result.Error });
+            
+        _logger.LogInformation("Course created with ID: {CourseId}, Code: {Code}", result.Data, command.Code);
+        return CreatedAtAction(nameof(GetById), new { id = result.Data }, result.Data);
     }
 
     /// <summary>
@@ -97,14 +115,18 @@ public class CoursesController : ControllerBase
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCourseCommand command)
     {
         if (id != command.Id)
-            return BadRequest("El ID de la ruta no coincide con el ID del comando");
+            return BadRequest(new { error = "Route ID does not match command ID" });
 
         var result = await _mediator.Send(command);
         
         if (!result.IsSuccess)
-            return NotFound(result.Error);
+        {
+            if (result.Error.Contains("not found"))
+                return NotFound(new { error = result.Error });
+            return BadRequest(new { error = result.Error });
+        }
             
-        _logger.LogInformation("Curso actualizado: {CourseId}", id);
+        _logger.LogInformation("Course updated: {CourseId}", id);
         return NoContent();
     }
 
@@ -120,9 +142,9 @@ public class CoursesController : ControllerBase
         var result = await _mediator.Send(command);
         
         if (!result.IsSuccess)
-            return NotFound(result.Error);
+            return NotFound(new { error = result.Error });
             
-        _logger.LogInformation("Curso eliminado: {CourseId}", id);
+        _logger.LogInformation("Course deleted: {CourseId}", id);
         return NoContent();
     }
 
@@ -135,14 +157,14 @@ public class CoursesController : ControllerBase
     public async Task<IActionResult> AddPrerequisite(Guid id, [FromBody] AddPrerequisiteCommand command)
     {
         if (id != command.CourseId)
-            return BadRequest("El ID del curso no coincide");
+            return BadRequest(new { error = "Route ID does not match course ID" });
 
         var result = await _mediator.Send(command);
         
         if (!result.IsSuccess)
-            return BadRequest(result.Error);
+            return BadRequest(new { error = result.Error });
             
-        return Ok(new { message = "Prerrequisito agregado exitosamente" });
+        return Ok(new { message = "Prerequisite added successfully", prerequisiteId = result.Data });
     }
 
     /// <summary>
@@ -155,6 +177,23 @@ public class CoursesController : ControllerBase
         var query = new GetCoursePrerequisitesQuery(id);
         var prerequisites = await _mediator.Send(query);
         return Ok(prerequisites);
+    }
+
+    /// <summary>
+    /// Elimina un prerrequisito
+    /// </summary>
+    [HttpDelete("{id:guid}/prerequisites/{prerequisiteId:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> RemovePrerequisite(Guid id, Guid prerequisiteId)
+    {
+        var command = new RemovePrerequisiteCommand(id, prerequisiteId);
+        var result = await _mediator.Send(command);
+        
+        if (!result.IsSuccess)
+            return NotFound(new { error = result.Error });
+            
+        return NoContent();
     }
 
     /// <summary>
@@ -181,20 +220,49 @@ public class CoursesController : ControllerBase
         var result = await _mediator.Send(command);
         
         if (!result.IsSuccess)
-            return BadRequest(result.Error);
+            return BadRequest(new { error = result.Error });
             
-        return Ok(new { message = "Inscripción incrementada exitosamente" });
+        return Ok(new { message = "Enrollment incremented successfully", newEnrollmentCount = result.Data });
     }
 
     /// <summary>
-    /// Obtiene cursos por rango de créditos
+    /// Decrementa el número de inscritos en un curso
     /// </summary>
-    [HttpGet("by-credits")]
-    [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<CourseDto>>> GetByCreditsRange([FromQuery] int minCredits, [FromQuery] int maxCredits)
+    [HttpPost("{id:guid}/decrement-enrollment")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> DecrementEnrollment(Guid id)
     {
-        var query = new GetCoursesByCreditsRangeQuery(minCredits, maxCredits);
+        var command = new DecrementCourseEnrollmentCommand(id);
+        var result = await _mediator.Send(command);
+        
+        if (!result.IsSuccess)
+            return BadRequest(new { error = result.Error });
+            
+        return Ok(new { message = "Enrollment decremented successfully", newEnrollmentCount = result.Data });
+    }
+
+    /// <summary>
+    /// Obtiene cursos activos disponibles
+    /// </summary>
+    [HttpGet("available")]
+    [ProducesResponseType(typeof(IEnumerable<CourseDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<CourseDto>>> GetAvailableCourses()
+    {
+        var query = new GetAvailableCoursesQuery();
         var courses = await _mediator.Send(query);
         return Ok(courses);
+    }
+
+    /// <summary>
+    /// Obtiene estadísticas de cursos
+    /// </summary>
+    [HttpGet("statistics")]
+    [ProducesResponseType(typeof(CourseStatisticsDto), StatusCodes.Status200OK)]
+    public async Task<ActionResult<CourseStatisticsDto>> GetStatistics()
+    {
+        var query = new GetCourseStatisticsQuery();
+        var statistics = await _mediator.Send(query);
+        return Ok(statistics);
     }
 }
