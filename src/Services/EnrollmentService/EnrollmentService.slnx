@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="EnrollmentService.API/EnrollmentService.API.csproj" />
+  <Project Path="EnrollmentService.Application/EnrollmentService.Application.csproj" />
+  <Project Path="EnrollmentService.Domain/EnrollmentService.Domain.csproj" />
+  <Project Path="EnrollmentService.Infrastructure/EnrollmentService.Infrastructure.csproj" />
+</Solution>

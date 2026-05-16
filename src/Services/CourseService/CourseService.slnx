@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="CourseService.API/CourseService.API.csproj" />
+  <Project Path="CourseService.Application/CourseService.Application.csproj" />
+  <Project Path="CourseService.Domain/CourseService.Domain.csproj" />
+  <Project Path="CourseService.Infrastructure/CourseService.Infrastructure.csproj" />
+</Solution>

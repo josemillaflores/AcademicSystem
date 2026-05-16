@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  studentservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./src/Services/StudentService:/app
+      - ~/.aspnet/https:/root/.aspnet/https:ro
+  
+  teacherservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./src/Services/TeacherService:/app
+  
+  courseservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./src/Services/CourseService:/app
+  
+  enrollmentservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./src/Services/EnrollmentService:/app
+  
+  paymentservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./src/Services/PaymentService:/app
