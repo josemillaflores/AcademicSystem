@@ -1,0 +1,188 @@
+# Student Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studentservice
+  namespace: academic-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: studentservice
+  template:
+    metadata:
+      labels:
+        app: studentservice
+    spec:
+      containers:
+      - name: studentservice
+        image: academicsystem/studentservice:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: ConnectionStrings__DefaultConnection
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: studentservice-service
+  namespace: academic-system
+spec:
+  selector:
+    app: studentservice
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+# Course Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: courseservice
+  namespace: academic-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: courseservice
+  template:
+    metadata:
+      labels:
+        app: courseservice
+    spec:
+      containers:
+      - name: courseservice
+        image: academicsystem/courseservice:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: ConnectionStrings__DefaultConnection
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: courseservice-service
+  namespace: academic-system
+spec:
+  selector:
+    app: courseservice
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+# Enrollment Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enrollmentservice
+  namespace: academic-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: enrollmentservice
+  template:
+    metadata:
+      labels:
+        app: enrollmentservice
+    spec:
+      containers:
+      - name: enrollmentservice
+        image: academicsystem/enrollmentservice:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: ConnectionStrings__DefaultConnection
+        - name: RabbitMQ__HostName
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: RabbitMQ__HostName
+        # Comunicación Sincrónica entre Microservicios (Corregido y Mapeado en K8s)
+        - name: Services__StudentService
+          value: "http://studentservice-service:80"
+        - name: Services__CourseService
+          value: "http://courseservice-service:80"
+        - name: Services__PaymentService
+          value: "http://paymentservice-service:80"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: enrollmentservice-service
+  namespace: academic-system
+spec:
+  selector:
+    app: enrollmentservice
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+# Payment Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentservice
+  namespace: academic-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paymentservice
+  template:
+    metadata:
+      labels:
+        app: paymentservice
+    spec:
+      containers:
+      - name: paymentservice
+        image: academicsystem/paymentservice:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
+        - name: ConnectionStrings__DefaultConnection
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: ConnectionStrings__DefaultConnection
+        - name: RabbitMQ__HostName
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: RabbitMQ__HostName
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: paymentservice-service
+  namespace: academic-system
+spec:
+  selector:
+    app: paymentservice
+  ports:
+  - port: 80
+    targetPort: 8080
