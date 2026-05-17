@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using AcademicSystem.Common.Entities;
 using StudentService.Domain.Entities;
-using StudentService.Domain.ValueObjects;
 using StudentService.Infrastructure.Data.Configurations;
-using System.Reflection;
 
 namespace StudentService.Infrastructure.Data;
 
@@ -22,13 +21,6 @@ public class StudentDbContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.EnableSensitiveDataLogging();
-        optionsBuilder.EnableDetailedErrors();
-        base.OnConfiguring(optionsBuilder);
-    }
-
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         // Actualizar timestamps automáticamente
@@ -39,11 +31,14 @@ public class StudentDbContext : DbContext
 
         foreach (var entityEntry in entries)
         {
+            var entity = (BaseEntity)entityEntry.Entity;
+            
             if (entityEntry.State == EntityState.Added)
             {
-                ((BaseEntity)entityEntry.Entity).CreatedAt = DateTime.UtcNow;
+                entity.CreatedAt = DateTime.UtcNow;
             }
-            ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.UtcNow;
+            
+            entity.UpdatedAt = DateTime.UtcNow;
         }
 
         return await base.SaveChangesAsync(cancellationToken);

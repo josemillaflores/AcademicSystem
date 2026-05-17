@@ -1,3 +1,4 @@
+using EnrollmentService.Application.Commands;
 using FluentValidation;
 
 namespace EnrollmentService.Application.Validators;

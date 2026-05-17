@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vQCijmHR6No=",
+  "dgSpecHash": "3aomg2P/7Zc=",
   "success": true,
-  "projectFilePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+  "projectFilePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
@@ -64,10 +64,10 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
-      "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+      "message": "El paquete \"AutoMapper\" 13.0.1 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
       "warningLevel": 1,
-      "filePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+      "filePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net10.0"
@@ -76,10 +76,10 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-37gx-xxp4-5rgx",
-      "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+      "message": "El paquete \"System.Security.Cryptography.Xml\" 9.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-37gx-xxp4-5rgx",
+      "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
       "warningLevel": 1,
-      "filePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+      "filePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
       "libraryId": "System.Security.Cryptography.Xml",
       "targetGraphs": [
         "net10.0"
@@ -88,10 +88,10 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-w3x6-4m5h-cxqf",
-      "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+      "message": "El paquete \"System.Security.Cryptography.Xml\" 9.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-w3x6-4m5h-cxqf",
+      "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
       "warningLevel": 1,
-      "filePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+      "filePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
       "libraryId": "System.Security.Cryptography.Xml",
       "targetGraphs": [
         "net10.0"

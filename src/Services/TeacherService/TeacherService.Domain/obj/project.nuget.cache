@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aUluu6b4SsI=",
+  "dgSpecHash": "iRJOwNDLHZA=",
   "success": true,
-  "projectFilePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj",
+  "projectFilePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0\\microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.0\\microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",

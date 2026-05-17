@@ -1,3 +1,4 @@
+using StudentService.Domain.Entities;
 using StudentService.Domain.Interfaces;
 using StudentService.Infrastructure.Data;
 

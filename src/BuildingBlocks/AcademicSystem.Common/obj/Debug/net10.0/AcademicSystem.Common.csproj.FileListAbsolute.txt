@@ -10,3 +10,4 @@ d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicS
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.Common\obj\Debug\net10.0\refint\AcademicSystem.Common.dll
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.Common\obj\Debug\net10.0\AcademicSystem.Common.pdb
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.Common\obj\Debug\net10.0\ref\AcademicSystem.Common.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.Common\obj\Debug\net10.0\AcademicSystem.Common.sourcelink.json

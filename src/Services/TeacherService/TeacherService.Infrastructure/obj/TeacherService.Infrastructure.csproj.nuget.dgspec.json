@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\TeacherService.Infrastructure.csproj": {}
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\TeacherService.Infrastructure.csproj": {}
   },
   "projects": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
         "projectName": "AcademicSystem.Common",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -353,14 +353,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj",
         "projectName": "TeacherService.Application",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -381,8 +381,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj"
               }
             }
           }
@@ -710,14 +710,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj",
         "projectName": "TeacherService.Domain",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -738,8 +738,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj"
               }
             }
           }
@@ -1053,14 +1053,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\TeacherService.Infrastructure.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\TeacherService.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\TeacherService.Infrastructure.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\TeacherService.Infrastructure.csproj",
         "projectName": "TeacherService.Infrastructure",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\TeacherService.Infrastructure.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\TeacherService.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1081,8 +1081,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj"
               }
             }
           }

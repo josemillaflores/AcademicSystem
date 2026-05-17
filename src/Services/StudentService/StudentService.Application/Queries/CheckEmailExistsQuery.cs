@@ -1,4 +1,5 @@
 using MediatR;
+using StudentService.Domain.Interfaces;
 
 namespace StudentService.Application.Queries;
 

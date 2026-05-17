@@ -1,3 +1,4 @@
+using AcademicSystem.Common.Entities;
 using PaymentService.Domain.Enums;
 
 namespace PaymentService.Domain.Entities;
@@ -20,30 +21,5 @@ public class Transaction : BaseEntity
         TransactionDate = DateTime.UtcNow;
         Status = TransactionStatus.Initiated;
         GatewayResponse = gatewayResponse;
-    }
-
-    public void Authorize()
-    {
-        Status = TransactionStatus.Authorized;
-        UpdateTimestamp();
-    }
-
-    public void Capture()
-    {
-        Status = TransactionStatus.Captured;
-        UpdateTimestamp();
-    }
-
-    public void Fail(string reason)
-    {
-        Status = TransactionStatus.Failed;
-        GatewayResponse = reason;
-        UpdateTimestamp();
-    }
-
-    public void Refund()
-    {
-        Status = TransactionStatus.Refunded;
-        UpdateTimestamp();
     }
 }

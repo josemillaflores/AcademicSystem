@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\temp_rabbit_test.csproj": {}
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\temp_rabbit_test.csproj": {}
   },
   "projects": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\temp_rabbit_test.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\temp_rabbit_test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\temp_rabbit_test.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\temp_rabbit_test.csproj",
         "projectName": "temp_rabbit_test",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\temp_rabbit_test.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\temp_rabbit_test.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\temp_rabbit_test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

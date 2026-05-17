@@ -15,9 +15,7 @@ public class EnrollmentProfile : Profile
             .ForMember(dest => dest.Period, opt => opt.MapFrom(src => src.Period.Name))
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
             .ForMember(dest => dest.RejectionReason, opt => opt.MapFrom(src => src.RejectionReason))
-            .ForMember(dest => dest.Validations, opt => opt.MapFrom(src => src.Validations))
-            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt))
-            .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(src => src.UpdatedAt));
+            .ForMember(dest => dest.Validations, opt => opt.MapFrom(src => src.Validations));
         
         CreateMap<EnrollmentValidation, EnrollmentValidationDto>()
             .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type.ToString()))

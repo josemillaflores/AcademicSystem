@@ -1,0 +1,6 @@
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\CourseService\CourseService.Domain\obj\Debug\net10.0\CourseService.Domain.csproj.AssemblyReference.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\CourseService\CourseService.Domain\obj\Debug\net10.0\CourseService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\CourseService\CourseService.Domain\obj\Debug\net10.0\CourseService.Domain.AssemblyInfoInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\CourseService\CourseService.Domain\obj\Debug\net10.0\CourseService.Domain.AssemblyInfo.cs
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\CourseService\CourseService.Domain\obj\Debug\net10.0\CourseService.Domain.csproj.CoreCompileInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\CourseService\CourseService.Domain\obj\Debug\net10.0\CourseService.Domain.sourcelink.json

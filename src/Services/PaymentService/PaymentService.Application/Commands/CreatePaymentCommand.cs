@@ -1,4 +1,7 @@
+using AcademicSystem.Common.Results;
 using MediatR;
+using Microsoft.Extensions.Logging;
+using PaymentService.Domain.Interfaces;
 
 namespace PaymentService.Application.Commands;
 
@@ -43,7 +46,7 @@ public class CreatePaymentCommandHandler : IRequestHandler<CreatePaymentCommand,
             _logger.LogInformation("Payment created with ID: {PaymentId}, Number: {PaymentNumber}", 
                 payment.Id, paymentNumber);
             
-            return Result<Guid>.Success(payment.Id, paymentNumber);
+            return Result<Guid>.Success(payment.Id);
         }
         catch (Exception ex)
         {

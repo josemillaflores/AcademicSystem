@@ -1,4 +1,5 @@
 using FluentValidation;
+using PaymentService.Application.Commands;
 
 namespace PaymentService.Application.Validators;
 

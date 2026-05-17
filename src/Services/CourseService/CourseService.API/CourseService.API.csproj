@@ -7,13 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <!-- Project References -->
+    <ProjectReference Include="..\CourseService.Application\CourseService.Application.csproj" />
+    <ProjectReference Include="..\CourseService.Infrastructure\CourseService.Infrastructure.csproj" />
+    
+    <!-- API -->
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="7.9.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CourseService.Infrastructure\CourseService.Infrastructure.csproj" />
+    
+    <!-- Authentication -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.0" />
+    
+    <!-- Health Checks -->
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="10.0.0" />
+    
+    <!-- Rate Limiting -->
+    <PackageReference Include="Microsoft.AspNetCore.RateLimiting" Version="10.0.0" />
+    
+    <!-- CORS -->
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.3.0" />
+    
+    <!-- Response Compression -->
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="10.0.0" />
   </ItemGroup>
 
 </Project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj": {}
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj": {}
   },
   "projects": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
         "projectName": "AcademicSystem.Common",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -353,14 +353,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj",
         "projectName": "PaymentService.Application",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -381,8 +381,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj"
               }
             }
           }
@@ -710,14 +710,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj",
         "projectName": "PaymentService.Domain",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -738,8 +738,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj"
               }
             }
           }
@@ -1053,14 +1053,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj",
         "projectName": "PaymentService.Infrastructure",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1081,8 +1081,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Application\\PaymentService.Application.csproj"
               }
             }
           }

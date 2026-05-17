@@ -1,29 +1,18 @@
 namespace AcademicSystem.Common.Results;
 
-public class Result
+public class Result<T>
 {
     public bool IsSuccess { get; }
-    public bool IsFailure => !IsSuccess;
+    public T? Data { get; }
     public string? Error { get; }
-    
-    protected Result(bool isSuccess, string? error)
+
+    protected Result(bool isSuccess, T? data, string? error = null)
     {
         IsSuccess = isSuccess;
+        Data = data;
         Error = error;
     }
-    
-    public static Result Ok() => new(true, null);
-    public static Result<T> Ok<T>(T value) => new(value, true, null);
-    public static Result Fail(string error) => new(false, error);
-    public static Result<T> Fail<T>(string error) => new(default!, false, error);
-}
 
-public class Result<T> : Result
-{
-    public T Value { get; }
-    
-    internal Result(T value, bool isSuccess, string? error) : base(isSuccess, error)
-    {
-        Value = value;
-    }
+    public static Result<T> Success(T data) => new Result<T>(true, data, null);
+    public static Result<T> Failure(string error) => new Result<T>(false, default, error);
 }

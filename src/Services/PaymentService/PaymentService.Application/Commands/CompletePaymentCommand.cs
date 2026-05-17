@@ -1,4 +1,8 @@
+using AcademicSystem.Common.Results;
 using MediatR;
+using Microsoft.Extensions.Logging;
+using PaymentService.Domain.Interfaces;
+using AcademicSystem.Events;
 
 namespace PaymentService.Application.Commands;
 
@@ -42,7 +46,7 @@ public class CompletePaymentCommandHandler : IRequestHandler<CompletePaymentComm
             await _eventBus.PublishAsync(new PaymentCompletedEvent(
                 payment.Id,
                 payment.StudentId,
-                payment.Amount,
+                payment.Amount.Amount,
                 request.TransactionId
             ));
             

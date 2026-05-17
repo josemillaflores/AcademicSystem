@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PaymentService.Domain.Entities;
+using PaymentService.Domain.Enums;
 using PaymentService.Domain.Interfaces;
 using PaymentService.Infrastructure.Data;
 using System.Linq.Expressions;
@@ -95,6 +96,6 @@ public class PaymentRepository : IPaymentRepository
     {
         return await _dbSet
             .Where(p => p.StudentId == studentId && p.Status == PaymentStatus.Completed)
-            .SumAsync(p => p.Amount, cancellationToken);
+            .SumAsync(p => p.Amount.Amount, cancellationToken);
     }
 }

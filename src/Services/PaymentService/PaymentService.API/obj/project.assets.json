@@ -972,11 +972,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.API\\PaymentService.API.csproj",
+      "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.API\\PaymentService.API.csproj",
       "projectName": "PaymentService.API",
-      "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.API\\PaymentService.API.csproj",
+      "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.API\\PaymentService.API.csproj",
       "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-      "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.API\\obj\\",
+      "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -997,8 +997,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj": {
-              "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj"
+            "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj": {
+              "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Infrastructure\\PaymentService.Infrastructure.csproj"
             }
           }
         }

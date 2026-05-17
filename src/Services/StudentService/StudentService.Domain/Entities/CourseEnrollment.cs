@@ -1,11 +1,8 @@
+using AcademicSystem.Common.Entities;
 using StudentService.Domain.Enums;
 
 namespace StudentService.Domain.Entities;
 
-/// <summary>
-/// Entidad interna del agregado Student
-/// Representa la inscripción a un curso
-/// </summary>
 public class CourseEnrollment : BaseEntity
 {
     public Guid CourseId { get; private set; }
@@ -30,18 +27,6 @@ public class CourseEnrollment : BaseEntity
     public void Approve()
     {
         Status = EnrollmentStatus.Approved;
-        UpdateTimestamp();
-    }
-
-    public void Reject()
-    {
-        Status = EnrollmentStatus.Rejected;
-        UpdateTimestamp();
-    }
-
-    public void Cancel()
-    {
-        Status = EnrollmentStatus.Cancelled;
         UpdateTimestamp();
     }
 

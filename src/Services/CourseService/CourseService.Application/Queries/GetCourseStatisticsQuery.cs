@@ -1,5 +1,6 @@
 using MediatR;
 using CourseService.Application.DTOs;
+using CourseService.Domain.Interfaces;
 
 namespace CourseService.Application.Queries;
 

@@ -1,3 +1,4 @@
+using AcademicSystem.Common.Results;
 using MediatR;
 
 namespace CourseService.Application.Commands;

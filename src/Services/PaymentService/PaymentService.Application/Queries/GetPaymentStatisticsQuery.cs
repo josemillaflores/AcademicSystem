@@ -1,5 +1,7 @@
 using MediatR;
 using PaymentService.Application.DTOs;
+using PaymentService.Domain.Enums;
+using PaymentService.Domain.Interfaces;
 
 namespace PaymentService.Application.Queries;
 
@@ -34,11 +36,11 @@ public class GetPaymentStatisticsQueryHandler : IRequestHandler<GetPaymentStatis
         
         var totalRevenue = paymentList
             .Where(p => p.Status == PaymentStatus.Completed)
-            .Sum(p => p.Amount);
+            .Sum(p => p.Amount.Amount);
         
         var revenueThisMonth = paymentList
             .Where(p => p.Status == PaymentStatus.Completed && p.CreatedAt.Month == DateTime.UtcNow.Month)
-            .Sum(p => p.Amount);
+            .Sum(p => p.Amount.Amount);
         
         var successRate = paymentList.Count > 0 
             ? (double)completedPayments / paymentList.Count * 100 
@@ -47,7 +49,7 @@ public class GetPaymentStatisticsQueryHandler : IRequestHandler<GetPaymentStatis
         var revenueByMethod = paymentList
             .Where(p => p.Status == PaymentStatus.Completed)
             .GroupBy(p => p.Method.ToString())
-            .ToDictionary(g => g.Key, g => g.Sum(p => p.Amount));
+            .ToDictionary(g => g.Key, g => g.Sum(p => p.Amount.Amount));
         
         return new PaymentStatisticsDto(
             TotalPayments: paymentList.Count,
@@ -55,7 +57,7 @@ public class GetPaymentStatisticsQueryHandler : IRequestHandler<GetPaymentStatis
             PendingPayments: pendingPayments,
             FailedPayments: failedPayments,
             TotalRevenue: totalRevenue,
-            AveragePaymentAmount: paymentList.Any() ? paymentList.Average(p => p.Amount) : 0,
+            AveragePaymentAmount: paymentList.Any() ? paymentList.Average(p => p.Amount.Amount) : 0,
             RevenueThisMonth: revenueThisMonth,
             SuccessRate: successRate,
             RevenueByMethod: revenueByMethod,

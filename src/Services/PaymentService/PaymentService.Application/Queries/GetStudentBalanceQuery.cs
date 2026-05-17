@@ -1,5 +1,7 @@
+using AutoMapper;
 using MediatR;
 using PaymentService.Application.DTOs;
+using PaymentService.Domain.Interfaces;
 
 namespace PaymentService.Application.Queries;
 
@@ -23,11 +25,11 @@ public class GetStudentBalanceQueryHandler : IRequestHandler<GetStudentBalanceQu
         
         var totalPaid = paymentList
             .Where(p => p.Status == PaymentStatus.Completed)
-            .Sum(p => p.Amount);
+            .Sum(p => p.Amount.Amount);
         
         var totalPending = paymentList
             .Where(p => p.Status == PaymentStatus.Pending || p.Status == PaymentStatus.Processing)
-            .Sum(p => p.Amount);
+            .Sum(p => p.Amount.Amount);
         
         var balance = totalPending - totalPaid;
         

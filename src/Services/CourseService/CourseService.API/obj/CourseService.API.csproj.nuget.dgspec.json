@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\CourseService.API.csproj": {}
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\CourseService.API.csproj": {}
   },
   "projects": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
         "projectName": "AcademicSystem.Common",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -353,14 +353,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\CourseService.API.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\CourseService.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\CourseService.API.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\CourseService.API.csproj",
         "projectName": "CourseService.API",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\CourseService.API.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\CourseService.API.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -381,6 +381,9 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj"
+              },
               "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj": {
                 "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj"
               }
@@ -403,11 +406,31 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "dependencies": {
-            "FluentValidation.AspNetCore": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[11.3.0, )"
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.AspNetCore.RateLimiting": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.AspNetCore.ResponseCompression": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.Extensions.Diagnostics.HealthChecks": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": {
               "target": "Package",
               "version": "[10.0.0, )"
             },
@@ -853,14 +876,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj",
         "projectName": "CourseService.Application",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -881,8 +904,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj"
               }
             }
           }
@@ -1210,14 +1233,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj",
         "projectName": "CourseService.Domain",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\CourseService.Domain.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1238,8 +1261,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj"
               }
             }
           }
@@ -1581,8 +1604,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj": {
-                "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj"
+              "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj": {
+                "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj"
               }
             }
           }

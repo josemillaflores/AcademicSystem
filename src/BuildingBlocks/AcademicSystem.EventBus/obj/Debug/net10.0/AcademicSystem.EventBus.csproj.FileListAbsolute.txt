@@ -3,3 +3,11 @@ d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicS
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.AssemblyInfoInputs.cache
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.AssemblyInfo.cs
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.csproj.CoreCompileInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\bin\Debug\net10.0\AcademicSystem.EventBus.deps.json
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\bin\Debug\net10.0\AcademicSystem.EventBus.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\bin\Debug\net10.0\AcademicSystem.EventBus.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.sourcelink.json
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\refint\AcademicSystem.EventBus.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\AcademicSystem.EventBus.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\BuildingBlocks\AcademicSystem.EventBus\obj\Debug\net10.0\ref\AcademicSystem.EventBus.dll

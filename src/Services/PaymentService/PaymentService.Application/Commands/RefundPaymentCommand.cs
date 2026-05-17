@@ -1,4 +1,7 @@
+using AcademicSystem.Common.Results;
 using MediatR;
+using Microsoft.Extensions.Logging;
+using PaymentService.Domain.Interfaces;
 
 namespace PaymentService.Application.Commands;
 
@@ -29,7 +32,7 @@ public class RefundPaymentCommandHandler : IRequestHandler<RefundPaymentCommand,
             if (payment == null)
                 return Result<Guid>.Failure($"Payment with ID {request.PaymentId} not found");
             
-            var refundAmount = request.Amount ?? payment.Amount;
+            var refundAmount = request.Amount ?? payment.Amount.Amount;
             var refund = payment.Refund(refundAmount);
             
             await _repository.UpdateAsync(payment, cancellationToken);

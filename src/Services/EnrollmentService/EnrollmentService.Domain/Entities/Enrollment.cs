@@ -1,5 +1,6 @@
-using EnrollmentService.Domain.ValueObjects;
+using AcademicSystem.Common.Entities;
 using EnrollmentService.Domain.Enums;
+using EnrollmentService.Domain.ValueObjects;
 
 namespace EnrollmentService.Domain.Entities;
 
@@ -29,21 +30,6 @@ public class Enrollment : BaseEntity
         EnrollmentDate = DateTime.UtcNow;
         Period = new EnrollmentPeriod(periodName);
         Status = EnrollmentStatus.Pending;
-        CreatedAt = DateTime.UtcNow;
-    }
-
-    public void UpdateCourseInfo(string name, string code)
-    {
-        CourseName = name;
-        CourseCode = code;
-        UpdateTimestamp();
-    }
-
-    public void UpdateStudentInfo(string name, string number)
-    {
-        StudentName = name;
-        StudentNumber = number;
-        UpdateTimestamp();
     }
 
     public void Approve()
@@ -63,31 +49,5 @@ public class Enrollment : BaseEntity
         Status = EnrollmentStatus.Rejected;
         RejectionReason = reason;
         UpdateTimestamp();
-    }
-
-    public void Cancel()
-    {
-        if (Status == EnrollmentStatus.Approved || Status == EnrollmentStatus.Pending)
-        {
-            Status = EnrollmentStatus.Cancelled;
-            UpdateTimestamp();
-        }
-        else
-        {
-            throw new InvalidOperationException($"Cannot cancel enrollment with status {Status}");
-        }
-    }
-
-    public void AddValidation(ValidationType type, bool isValid, string message)
-    {
-        var validation = new EnrollmentValidation(type, isValid, message);
-        _validations.Add(validation);
-        UpdateTimestamp();
-    }
-
-    public bool IsValid()
-    {
-        return Status == EnrollmentStatus.Pending && 
-               _validations.All(v => v.IsValid);
     }
 }

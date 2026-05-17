@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\AcademicSystem.Contracts.csproj": {}
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\AcademicSystem.Contracts.csproj": {}
   },
   "projects": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\AcademicSystem.Contracts.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\AcademicSystem.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\AcademicSystem.Contracts.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\AcademicSystem.Contracts.csproj",
         "projectName": "AcademicSystem.Contracts",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\AcademicSystem.Contracts.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\AcademicSystem.Contracts.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Shared\\AcademicSystem.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

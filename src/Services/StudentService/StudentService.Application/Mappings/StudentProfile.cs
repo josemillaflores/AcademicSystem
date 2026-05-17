@@ -44,9 +44,9 @@ public class StudentProfile : Profile
             .ForMember(dest => dest.CourseName, opt => opt.MapFrom(src => src.CourseName))
             .ForMember(dest => dest.Credits, opt => opt.MapFrom(src => src.Credits))
             .ForMember(dest => dest.Grade, opt => opt.MapFrom(src => src.Grade))
-            .ForMember(dest => dest.GradeLetter, opt => opt.MapFrom(src => GetGradeLetter(src.Grade)))
-            .ForMember(dest => dest.CompletionDate, opt => opt.MapFrom(src => src.CompletionDate))
-            .ForMember(dest => dest.Semester, opt => opt.MapFrom(src => src.Semester));
+        
+            .ForMember(dest => dest.CompletionDate, opt => opt.MapFrom(src => src.CompletionDate));
+           
     }
     
     private static int CalculateSemester(DateTime enrollmentDate)

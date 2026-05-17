@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "D4ROiAZdlqI=",
+  "dgSpecHash": "j1cgJ9SEpoE=",
   "success": true,
   "projectFilePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -62,7 +62,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "message": "El paquete \"AutoMapper\" 13.0.1 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
       "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
@@ -74,7 +74,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-37gx-xxp4-5rgx",
+      "message": "El paquete \"System.Security.Cryptography.Xml\" 9.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-37gx-xxp4-5rgx",
       "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
@@ -86,7 +86,7 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'System.Security.Cryptography.Xml' 9.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-w3x6-4m5h-cxqf",
+      "message": "El paquete \"System.Security.Cryptography.Xml\" 9.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-w3x6-4m5h-cxqf",
       "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
       "warningLevel": 1,
       "filePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",

@@ -1,154 +1,86 @@
-using System.Reflection;
-using System.Text;
-using FluentValidation.AspNetCore;
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using Serilog;
+using System.Text;
+using System.Threading.RateLimiting;
 using CourseService.Application.Commands;
+using CourseService.Application.Mappings;
 using CourseService.Domain.Interfaces;
 using CourseService.Infrastructure.Data;
 using CourseService.Infrastructure.Repositories;
-using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ==========================================
-// 1. SERILOG
-// ==========================================
-Log.Logger = new LoggerConfiguration()
-    .ReadFrom.Configuration(builder.Configuration)
-    .Enrich.FromLogContext()
-    .Enrich.WithProperty("Service", "CourseService")
-    .WriteTo.Console()
-    .WriteTo.File("logs/course-service-.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
+// Agregar controladores
+builder.Services.AddControllers();
 
-builder.Host.UseSerilog();
-
-// ==========================================
-// 2. CONTROLADORES
-// ==========================================
-builder.Services.AddControllers()
-    .AddFluentValidation(v =>
-    {
-        v.RegisterValidatorsFromAssemblyContaining<CreateCourseCommandValidator>();
-    });
-
-// ==========================================
-// 3. SWAGGER
-// ==========================================
+// Swagger - Versión simplificada sin seguridad
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Course Service API",
-        Version = "v1",
-        Description = "Microservicio para gestión de cursos"
-    });
-});
+builder.Services.AddSwaggerGen();
 
-// ==========================================
-// 4. JWT
-// ==========================================
-var authConfig = builder.Configuration.GetSection("Auth");
-var secretKey = Encoding.UTF8.GetBytes(authConfig["SecretKey"] ?? "default-secret-key");
-
+// JWT Authentication (simplificado)
+var key = Encoding.UTF8.GetBytes("your-super-secret-key-32-chars-minimum!");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = authConfig["Issuer"],
-            ValidAudience = authConfig["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(secretKey),
-            ClockSkew = TimeSpan.Zero
+            IssuerSigningKey = new SymmetricSecurityKey(key)
         };
     });
 
 builder.Services.AddAuthorization();
 
-// ==========================================
-// 5. MEDIATR
-// ==========================================
-builder.Services.AddMediatR(cfg =>
-{
-    cfg.RegisterServicesFromAssembly(typeof(CreateCourseCommandHandler).Assembly);
-});
+// MediatR
+builder.Services.AddMediatR(cfg => 
+    cfg.RegisterServicesFromAssembly(typeof(CreateCourseCommandHandler).Assembly));
 
-// ==========================================
-// 6. AUTOMAPPER
-// ==========================================
+// AutoMapper
 builder.Services.AddAutoMapper(typeof(CourseProfile));
 
-// ==========================================
-// 7. BASE DE DATOS
-// ==========================================
+// Database
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+    ?? "Host=localhost;Database=CourseDb;Username=postgres;Password=Admin123!";
+    
 builder.Services.AddDbContext<CourseDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+    options.UseNpgsql(connectionString));
 
-// ==========================================
-// 8. REPOSITORIOS
-// ==========================================
+// Repositories
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// ==========================================
-// 9. CORS
-// ==========================================
+// CORS
 builder.Services.AddCors(options =>
-{
     options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
-    });
-});
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
-// ==========================================
-// 10. RATE LIMITING
-// ==========================================
+// Rate Limiting
 builder.Services.AddRateLimiter(options =>
-{
-    options.AddFixedWindowLimiter("fixed", fixedOptions =>
+    options.AddFixedWindowLimiter("fixed", opt =>
     {
-        fixedOptions.PermitLimit = 100;
-        fixedOptions.Window = TimeSpan.FromSeconds(60);
-    });
-});
+        opt.PermitLimit = 100;
+        opt.Window = TimeSpan.FromSeconds(60);
+        opt.QueueLimit = 10;
+    }));
 
-// ==========================================
-// 11. HEALTH CHECKS
-// ==========================================
+// Health Checks
 builder.Services.AddHealthChecks()
     .AddDbContextCheck<CourseDbContext>("database");
 
-// ==========================================
-// 12. CONSTRUCCIÓN
-// ==========================================
 var app = builder.Build();
 
-// ==========================================
-// 13. PIPELINE
-// ==========================================
+// Pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseSerilogRequestLogging();
 app.UseRateLimiter();
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
@@ -157,17 +89,11 @@ app.UseAuthorization();
 app.MapHealthChecks("/health");
 app.MapControllers();
 
-// ==========================================
-// 14. MIGRACIONES
-// ==========================================
+// Aplicar migraciones automáticamente
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<CourseDbContext>();
-    await dbContext.Database.MigrateAsync();
+    await dbContext.Database.EnsureCreatedAsync();
 }
 
-// ==========================================
-// 15. INICIO
-// ==========================================
-Log.Information("Starting Course Service API");
 await app.RunAsync();

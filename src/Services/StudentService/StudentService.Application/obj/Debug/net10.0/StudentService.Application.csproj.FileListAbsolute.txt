@@ -1,0 +1,6 @@
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.Application\obj\Debug\net10.0\StudentService.Application.csproj.AssemblyReference.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.Application\obj\Debug\net10.0\StudentService.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.Application\obj\Debug\net10.0\StudentService.Application.AssemblyInfoInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.Application\obj\Debug\net10.0\StudentService.Application.AssemblyInfo.cs
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.Application\obj\Debug\net10.0\StudentService.Application.csproj.CoreCompileInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.Application\obj\Debug\net10.0\StudentService.Application.sourcelink.json

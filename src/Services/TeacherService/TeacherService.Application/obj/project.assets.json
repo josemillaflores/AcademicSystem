@@ -448,11 +448,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj",
+      "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj",
       "projectName": "TeacherService.Application",
-      "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj",
+      "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\TeacherService.Application.csproj",
       "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-      "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\obj\\",
+      "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -473,8 +473,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj": {
-              "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj"
+            "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj": {
+              "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\TeacherService\\TeacherService.Domain\\TeacherService.Domain.csproj"
             }
           }
         }

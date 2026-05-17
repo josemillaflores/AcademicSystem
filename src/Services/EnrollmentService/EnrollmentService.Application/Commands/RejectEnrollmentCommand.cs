@@ -1,4 +1,8 @@
+using AcademicSystem.Common.Results;
+using AcademicSystem.EventBus;
+using EnrollmentService.Domain.Interfaces;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace EnrollmentService.Application.Commands;
 

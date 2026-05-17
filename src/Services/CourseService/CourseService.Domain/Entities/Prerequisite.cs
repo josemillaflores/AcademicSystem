@@ -1,3 +1,5 @@
+using AcademicSystem.Common.Entities;
+
 namespace CourseService.Domain.Entities;
 
 public class Prerequisite : BaseEntity
@@ -10,17 +12,11 @@ public class Prerequisite : BaseEntity
 
     private Prerequisite() { }
 
-    public Prerequisite(Guid requiredCourseId, string requiredCourseName, bool isMandatory)
+    public Prerequisite(Guid requiredCourseId, string requiredCourseName, string requiredCourseCode, bool isMandatory)
     {
         RequiredCourseId = requiredCourseId;
         RequiredCourseName = requiredCourseName;
+        RequiredCourseCode = requiredCourseCode;
         IsMandatory = isMandatory;
-    }
-
-    public void UpdateRequiredCourseInfo(string name, string code)
-    {
-        RequiredCourseName = name;
-        RequiredCourseCode = code;
-        UpdateTimestamp();
     }
 }

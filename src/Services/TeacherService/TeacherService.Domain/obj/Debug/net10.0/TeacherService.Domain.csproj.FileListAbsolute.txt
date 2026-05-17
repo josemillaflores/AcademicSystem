@@ -1,0 +1,16 @@
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\bin\Debug\net10.0\TeacherService.Domain.deps.json
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\bin\Debug\net10.0\TeacherService.Domain.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\bin\Debug\net10.0\TeacherService.Domain.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\bin\Debug\net10.0\AcademicSystem.Common.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\bin\Debug\net10.0\AcademicSystem.Common.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherService.Domain.csproj.AssemblyReference.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherService.Domain.AssemblyInfoInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherService.Domain.AssemblyInfo.cs
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherService.Domain.csproj.CoreCompileInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherService.Domain.sourcelink.json
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherS.3F99126B.Up2Date
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherService.Domain.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\refint\TeacherService.Domain.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\TeacherService.Domain.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\TeacherService\TeacherService.Domain\obj\Debug\net10.0\ref\TeacherService.Domain.dll

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StudentService.Domain.Entities;
+using StudentService.Domain.Enums;
 using StudentService.Domain.Interfaces;
 using StudentService.Infrastructure.Data;
 using System.Linq.Expressions;

@@ -26,6 +26,8 @@ public record StudentInfoDto(
     List<CompletedCourseDto> CompletedCourses
 );
 
+public record CompletedCourseDto(Guid CourseId, string CourseName, double Grade);
+
 /// <summary>
 /// Información del curso para composición
 /// </summary>

@@ -137,7 +137,7 @@ public class StudentsController : ControllerBase
         _logger.LogInformation("Student created with ID: {StudentId}", result.Data);
         
         return CreatedAtAction(nameof(GetById), new { id = result.Data }, 
-            new CreateStudentResponse { Id = result.Data, StudentNumber = result.StudentNumber });
+            new CreateStudentResponse(result.Data, result.StudentNumber ?? string.Empty));
     }
 
     /// <summary>

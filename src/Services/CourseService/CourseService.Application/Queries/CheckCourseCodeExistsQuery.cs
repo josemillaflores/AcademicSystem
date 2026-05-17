@@ -1,3 +1,4 @@
+using CourseService.Domain.Interfaces;
 using MediatR;
 
 namespace CourseService.Application.Queries;

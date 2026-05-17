@@ -1,4 +1,7 @@
+using AcademicSystem.Common.Results;
 using MediatR;
+using TeacherService.Domain.Entities;
+using TeacherService.Domain.ValueObjects;
 
 namespace TeacherService.Application.Commands;
 

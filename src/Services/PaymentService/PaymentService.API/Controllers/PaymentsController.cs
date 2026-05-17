@@ -106,11 +106,9 @@ public class PaymentsController : ControllerBase
         if (!result.IsSuccess)
             return BadRequest(new { error = result.Error });
             
-        _logger.LogInformation("Payment created with ID: {PaymentId}, Number: {PaymentNumber}", 
-            result.Data, result.PaymentNumber);
+        _logger.LogInformation("Payment created with ID: {PaymentId}", result.Data);
             
-        return CreatedAtAction(nameof(GetById), new { id = result.Data }, 
-            new { id = result.Data, paymentNumber = result.PaymentNumber });
+        return CreatedAtAction(nameof(GetById), new { id = result.Data }, result.Data);
     }
 
     /// <summary>

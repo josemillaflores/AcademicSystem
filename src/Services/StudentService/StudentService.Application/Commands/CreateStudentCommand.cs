@@ -1,5 +1,10 @@
+using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using StudentService.Application.DTOs;
+using StudentService.Domain.Entities;
+using StudentService.Domain.Interfaces;
+using StudentService.Domain.ValueObjects;
 
 namespace StudentService.Application.Commands;
 

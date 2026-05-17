@@ -1,5 +1,8 @@
+using AutoMapper;
 using MediatR;
 using StudentService.Application.DTOs;
+using StudentService.Domain.Enums;
+using StudentService.Domain.Interfaces;
 
 namespace StudentService.Application.Queries;
 

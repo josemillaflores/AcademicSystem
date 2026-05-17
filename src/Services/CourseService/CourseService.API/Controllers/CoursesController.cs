@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using CourseService.Application.Commands;
 using CourseService.Application.DTOs;
 using CourseService.Application.Queries;
+using AcademicSystem.Common.Results;
 
 namespace CourseService.API.Controllers;
 

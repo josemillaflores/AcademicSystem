@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0XL4vk7IJk8=",
+  "dgSpecHash": "MduM3M6WLtk=",
   "success": true,
-  "projectFilePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj",
+  "projectFilePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\PaymentService\\PaymentService.Domain\\PaymentService.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0\\microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.0\\microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",

@@ -1,4 +1,6 @@
+using AutoMapper;
 using MediatR;
+using PaymentService.Domain.Interfaces;
 
 namespace PaymentService.Application.Queries;
 
@@ -35,7 +37,7 @@ public class ExportPaymentsQueryHandler : IRequestHandler<ExportPaymentsQuery, b
         
         foreach (var payment in paymentList)
         {
-            csv.AppendLine($"{payment.Id},{payment.PaymentNumber},{payment.StudentId},{payment.Amount},{payment.Currency},{payment.PaymentDate:yyyy-MM-dd},{payment.Method},{payment.Status}");
+            csv.AppendLine($"{payment.Id},{payment.PaymentNumber},{payment.StudentId},{payment.Amount.Amount},{payment.Amount.Currency},{payment.PaymentDate:yyyy-MM-dd},{payment.Method},{payment.Status}");
         }
         
         return System.Text.Encoding.UTF8.GetBytes(csv.ToString());

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EQEzC2tKqvI=",
+  "dgSpecHash": "sXk/fHiBkrQ=",
   "success": true,
-  "projectFilePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
+  "projectFilePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
@@ -53,10 +53,10 @@
     {
       "code": "NU1603",
       "level": "Warning",
-      "message": "EnrollmentService.API depends on Serilog.Sinks.File (>= 6.1.1) but Serilog.Sinks.File 6.1.1 was not found. Serilog.Sinks.File 7.0.0 was resolved instead.",
-      "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
+      "message": "EnrollmentService.API depende de Serilog.Sinks.File (>= 6.1.1), pero no se encontró Serilog.Sinks.File 6.1.1. Serilog.Sinks.File 7.0.0 se resolvió en su lugar.",
+      "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
       "warningLevel": 1,
-      "filePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
+      "filePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
       "libraryId": "Serilog.Sinks.File",
       "targetGraphs": [
         "net10.0"
@@ -65,10 +65,10 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
-      "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
+      "message": "El paquete \"AutoMapper\" 13.0.1 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
       "warningLevel": 1,
-      "filePath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
+      "filePath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.API\\EnrollmentService.API.csproj",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net10.0"

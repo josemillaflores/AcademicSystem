@@ -1,5 +1,6 @@
-using CourseService.Domain.ValueObjects;
+using AcademicSystem.Common.Entities;
 using CourseService.Domain.Enums;
+using CourseService.Domain.ValueObjects;
 
 namespace CourseService.Domain.Entities;
 
@@ -31,7 +32,6 @@ public class Course : BaseEntity
         MaxCapacity = maxCapacity;
         CurrentEnrollment = 0;
         Status = CourseStatus.Active;
-        CreatedAt = DateTime.UtcNow;
     }
 
     public void UpdateInfo(string name, string description, int credits, int maxCapacity)
@@ -41,28 +41,6 @@ public class Course : BaseEntity
         Credits = credits;
         MaxCapacity = maxCapacity;
         UpdateTimestamp();
-    }
-
-    public Prerequisite AddPrerequisite(Guid requiredCourseId, string requiredCourseName, bool isMandatory = true)
-    {
-        if (_prerequisites.Any(p => p.RequiredCourseId == requiredCourseId))
-            throw new InvalidOperationException("Prerequisite already exists");
-
-        var prerequisite = new Prerequisite(requiredCourseId, requiredCourseName, isMandatory);
-        _prerequisites.Add(prerequisite);
-        UpdateTimestamp();
-        
-        return prerequisite;
-    }
-
-    public void RemovePrerequisite(Guid prerequisiteId)
-    {
-        var prerequisite = _prerequisites.FirstOrDefault(p => p.Id == prerequisiteId);
-        if (prerequisite != null)
-        {
-            _prerequisites.Remove(prerequisite);
-            UpdateTimestamp();
-        }
     }
 
     public bool IncrementEnrollment()
@@ -79,34 +57,5 @@ public class Course : BaseEntity
         return true;
     }
 
-    public void DecrementEnrollment()
-    {
-        if (CurrentEnrollment > 0)
-        {
-            CurrentEnrollment--;
-            if (Status == CourseStatus.Full && CurrentEnrollment < MaxCapacity)
-                Status = CourseStatus.Active;
-            UpdateTimestamp();
-        }
-    }
-
     public bool HasAvailableSlots() => CurrentEnrollment < MaxCapacity;
-
-    public void SetSchedule(Schedule schedule)
-    {
-        Schedule = schedule;
-        UpdateTimestamp();
-    }
-
-    public void Activate()
-    {
-        Status = CourseStatus.Active;
-        UpdateTimestamp();
-    }
-
-    public void Cancel()
-    {
-        Status = CourseStatus.Cancelled;
-        UpdateTimestamp();
-    }
 }

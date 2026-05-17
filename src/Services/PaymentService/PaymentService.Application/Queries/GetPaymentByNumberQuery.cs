@@ -1,5 +1,7 @@
+using AutoMapper;
 using MediatR;
 using PaymentService.Application.DTOs;
+using PaymentService.Domain.Interfaces;
 
 namespace PaymentService.Application.Queries;
 

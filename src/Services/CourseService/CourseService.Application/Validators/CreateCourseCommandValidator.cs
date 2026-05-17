@@ -1,3 +1,4 @@
+using CourseService.Application.Commands;
 using FluentValidation;
 
 namespace CourseService.Application.Validators;

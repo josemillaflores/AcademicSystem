@@ -1,4 +1,6 @@
+using AutoMapper;
 using MediatR;
+using StudentService.Domain.Interfaces;
 using System.Text;
 
 namespace StudentService.Application.Queries;

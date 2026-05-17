@@ -1,4 +1,5 @@
 using FluentValidation;
+using StudentService.Application.Commands;
 
 namespace StudentService.Application.Validators;
 

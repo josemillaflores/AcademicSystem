@@ -1,5 +1,8 @@
+using AutoMapper;
 using MediatR;
 using EnrollmentService.Application.DTOs;
+using EnrollmentService.Domain.Enums;
+using EnrollmentService.Domain.Interfaces;
 
 namespace EnrollmentService.Application.Queries;
 

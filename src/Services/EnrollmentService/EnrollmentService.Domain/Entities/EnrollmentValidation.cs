@@ -1,3 +1,4 @@
+using AcademicSystem.Common.Entities;
 using EnrollmentService.Domain.Enums;
 
 namespace EnrollmentService.Domain.Entities;

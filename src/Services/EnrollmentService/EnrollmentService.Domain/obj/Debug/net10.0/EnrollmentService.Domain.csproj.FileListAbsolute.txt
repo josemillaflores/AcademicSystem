@@ -2,3 +2,17 @@ d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentServi
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.AssemblyInfoInputs.cache
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.AssemblyInfo.cs
 d:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.csproj.CoreCompileInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.csproj.AssemblyReference.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.sourcelink.json
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\bin\Debug\net10.0\EnrollmentService.Domain.deps.json
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\bin\Debug\net10.0\EnrollmentService.Domain.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\bin\Debug\net10.0\EnrollmentService.Domain.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\bin\Debug\net10.0\AcademicSystem.Common.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\bin\Debug\net10.0\AcademicSystem.EventBus.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\bin\Debug\net10.0\AcademicSystem.Common.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\bin\Debug\net10.0\AcademicSystem.EventBus.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\Enrollme.A328A769.Up2Date
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\refint\EnrollmentService.Domain.dll
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\EnrollmentService.Domain.pdb
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Domain\obj\Debug\net10.0\ref\EnrollmentService.Domain.dll

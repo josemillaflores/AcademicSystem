@@ -1,5 +1,6 @@
-using PaymentService.Domain.ValueObjects;
+using AcademicSystem.Common.Entities;
 using PaymentService.Domain.Enums;
+using PaymentService.Domain.ValueObjects;
 
 namespace PaymentService.Domain.Entities;
 
@@ -29,23 +30,6 @@ public class Payment : BaseEntity
         PaymentNumber = paymentNumber;
         PaymentDate = DateTime.UtcNow;
         Status = PaymentStatus.Pending;
-        CreatedAt = DateTime.UtcNow;
-    }
-
-    public void UpdateStudentInfo(string name, string number)
-    {
-        StudentName = name;
-        StudentNumber = number;
-        UpdateTimestamp();
-    }
-
-    public void Process()
-    {
-        if (Status != PaymentStatus.Pending)
-            throw new InvalidOperationException($"Cannot process payment with status {Status}");
-
-        Status = PaymentStatus.Processing;
-        UpdateTimestamp();
     }
 
     public void Complete(string transactionId, string? gatewayResponse = null)
@@ -60,44 +44,5 @@ public class Payment : BaseEntity
         _transactions.Add(transaction);
         
         UpdateTimestamp();
-    }
-
-    public void Fail(string reason)
-    {
-        if (Status == PaymentStatus.Completed)
-            throw new InvalidOperationException("Cannot fail a completed payment");
-
-        Status = PaymentStatus.Failed;
-        GatewayResponse = reason;
-        UpdateTimestamp();
-    }
-
-    public Transaction Refund(decimal amount)
-    {
-        if (Status != PaymentStatus.Completed)
-            throw new InvalidOperationException("Cannot refund a payment that is not completed");
-
-        if (amount > Amount.Amount)
-            throw new InvalidOperationException("Refund amount cannot exceed payment amount");
-
-        var refundTransaction = new Transaction($"REF-{PaymentNumber}", amount, "Refund processed");
-        _transactions.Add(refundTransaction);
-        
-        UpdateTimestamp();
-        return refundTransaction;
-    }
-
-    public decimal GetTotalPaid()
-    {
-        return _transactions
-            .Where(t => t.Status == TransactionStatus.Captured)
-            .Sum(t => t.Amount);
-    }
-
-    public decimal GetTotalRefunded()
-    {
-        return _transactions
-            .Where(t => t.Status == TransactionStatus.Refunded)
-            .Sum(t => t.Amount);
     }
 }
