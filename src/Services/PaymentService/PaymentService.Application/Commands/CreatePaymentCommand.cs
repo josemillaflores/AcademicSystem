@@ -1,6 +1,8 @@
 using AcademicSystem.Common.Results;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using PaymentService.Domain.Entities;
+using PaymentService.Domain.Enums;
 using PaymentService.Domain.Interfaces;
 
 namespace PaymentService.Application.Commands;

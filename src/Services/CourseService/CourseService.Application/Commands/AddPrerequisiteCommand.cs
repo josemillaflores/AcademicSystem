@@ -1,5 +1,7 @@
 using AcademicSystem.Common.Results;
+using CourseService.Domain.Interfaces;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace CourseService.Application.Commands;
 
@@ -36,7 +38,7 @@ public class AddPrerequisiteCommandHandler : IRequestHandler<AddPrerequisiteComm
             if (requiredCourse == null)
                 return Result<Guid>.Failure($"Required course with ID {request.RequiredCourseId} not found");
             
-            var prerequisite = course.AddPrerequisite(request.RequiredCourseId, requiredCourse.Name, request.IsMandatory);
+            var prerequisite = course.AddPrerequisite(request.RequiredCourseId, requiredCourse.Name, requiredCourse.Code, request.IsMandatory);
             
             await _repository.UpdateAsync(course, cancellationToken);
             await _repository.SaveChangesAsync(cancellationToken);

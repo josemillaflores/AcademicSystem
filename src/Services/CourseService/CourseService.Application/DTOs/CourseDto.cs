@@ -17,7 +17,10 @@ public record CourseDto(
     int AvailableSlots,
     List<PrerequisiteDto> Prerequisites,
     ScheduleDto? Schedule
-);
+)
+{
+    public CourseDto() : this(Guid.Empty, string.Empty, string.Empty, string.Empty, 0, 0, 0, 0, string.Empty, false, 0, new List<PrerequisiteDto>(), null) { }
+}
 
 /// <summary>
 /// DTO para horario del curso
@@ -27,7 +30,10 @@ public record ScheduleDto(
     TimeSpan StartTime,
     TimeSpan EndTime,
     string Classroom
-);
+)
+{
+    public ScheduleDto() : this(string.Empty, TimeSpan.Zero, TimeSpan.Zero, string.Empty) { }
+}
 
 /// <summary>
 /// DTO para creación de curso

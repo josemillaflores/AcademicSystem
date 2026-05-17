@@ -1,6 +1,7 @@
 using AutoMapper;
 using CourseService.Application.DTOs;
 using CourseService.Domain.Entities;
+using CourseService.Domain.ValueObjects;
 
 namespace CourseService.Application.Mappings;
 

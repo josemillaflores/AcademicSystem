@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "TeacherService API", Version = "v1" });
 });
 
-var key = Encoding.UTF8.GetBytes("default-secret-key-32-chars-minimum!");
+var key = Encoding.UTF8.GetBytes("your-super-secret-key-with-at-least-32-characters-long");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -34,7 +34,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Default", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+    });
+});
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateTeacherServiceCommandHandler).Assembly));
 builder.Services.AddAutoMapper(typeof(TeacherServiceProfile));
 builder.Services.AddDbContext<TeacherServiceDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

@@ -1,6 +1,0 @@
-D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Application\obj\Debug\net10.0\EnrollmentService.Application.csproj.AssemblyReference.cache
-D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Application\obj\Debug\net10.0\EnrollmentService.Application.GeneratedMSBuildEditorConfig.editorconfig
-D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Application\obj\Debug\net10.0\EnrollmentService.Application.AssemblyInfoInputs.cache
-D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Application\obj\Debug\net10.0\EnrollmentService.Application.AssemblyInfo.cs
-D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Application\obj\Debug\net10.0\EnrollmentService.Application.csproj.CoreCompileInputs.cache
-D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\EnrollmentService\EnrollmentService.Application\obj\Debug\net10.0\EnrollmentService.Application.sourcelink.json

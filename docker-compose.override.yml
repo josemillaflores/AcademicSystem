@@ -1,33 +1,24 @@
-version: '3.8'
-
 services:
   studentservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    volumes:
-      - ./src/Services/StudentService:/app
-      - ~/.aspnet/https:/root/.aspnet/https:ro
-  
-  teacherservice:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    volumes:
-      - ./src/Services/TeacherService:/app
+    ports:
+      - "5001:8080" # Expone StudentService en el puerto 5001 local
   
   courseservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    volumes:
-      - ./src/Services/CourseService:/app
+    ports:
+      - "5003:8080" # Expone CourseService en el puerto 5003 local
   
   enrollmentservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    volumes:
-      - ./src/Services/EnrollmentService:/app
+    ports:
+      - "5004:8080" # Expone EnrollmentService en el puerto 5004 local
   
   paymentservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    volumes:
-      - ./src/Services/PaymentService:/app
+    ports:
+      - "5005:8080" # Expone PaymentService en el puerto 5005 local

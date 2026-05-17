@@ -20,4 +20,7 @@ public record PaymentSummaryDto(
     decimal Amount,
     DateTime PaymentDate,
     string Status
-);
+)
+{
+    public PaymentSummaryDto() : this(Guid.Empty, string.Empty, 0, DateTime.MinValue, string.Empty) { }
+}

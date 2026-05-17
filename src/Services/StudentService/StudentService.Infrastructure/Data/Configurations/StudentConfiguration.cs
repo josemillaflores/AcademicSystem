@@ -92,6 +92,19 @@ public class StudentConfiguration : IEntityTypeConfiguration<Student>
             ar.Property(a => a.RequiredCreditsForGraduation)
                 .HasColumnName("RequiredCreditsForGraduation")
                 .HasDefaultValue(180);
+
+            ar.OwnsMany(a => a.CompletedCourses, cc =>
+            {
+                cc.ToTable("StudentCompletedCourses");
+                cc.WithOwner().HasForeignKey("StudentId");
+                cc.HasKey("CourseId", "StudentId");
+                cc.Property(c => c.CourseId).HasColumnName("CourseId");
+                cc.Property(c => c.CourseName).HasColumnName("CourseName").HasMaxLength(100);
+                cc.Property(c => c.Grade).HasColumnName("Grade");
+                cc.Property(c => c.Credits).HasColumnName("Credits");
+                cc.Property(c => c.CompletionDate).HasColumnName("CompletionDate");
+                cc.Property(c => c.Semester).HasColumnName("Semester");
+            });
         });
         
         // Propiedades simples

@@ -20,7 +20,12 @@ public class Course : BaseEntity
     
     public IReadOnlyCollection<Prerequisite> Prerequisites => _prerequisites.AsReadOnly();
 
-    private Course() { }
+    private Course() 
+    { 
+        Code = null!;
+        Name = null!;
+        Description = null!;
+    }
 
     public Course(string code, string name, string description, int credits, int totalHours, int maxCapacity)
     {
@@ -58,4 +63,35 @@ public class Course : BaseEntity
     }
 
     public bool HasAvailableSlots() => CurrentEnrollment < MaxCapacity;
+
+    public void DecrementEnrollment()
+    {
+        if (CurrentEnrollment > 0)
+        {
+            CurrentEnrollment--;
+            
+            if (Status == CourseStatus.Full && CurrentEnrollment < MaxCapacity)
+                Status = CourseStatus.Active;
+                
+            UpdateTimestamp();
+        }
+    }
+
+    public Prerequisite AddPrerequisite(Guid requiredCourseId, string requiredCourseName, string requiredCourseCode, bool isMandatory)
+    {
+        var prerequisite = new Prerequisite(requiredCourseId, requiredCourseName, requiredCourseCode, isMandatory);
+        _prerequisites.Add(prerequisite);
+        UpdateTimestamp();
+        return prerequisite;
+    }
+
+    public void RemovePrerequisite(Guid prerequisiteId)
+    {
+        var prerequisite = _prerequisites.FirstOrDefault(p => p.Id == prerequisiteId);
+        if (prerequisite != null)
+        {
+            _prerequisites.Remove(prerequisite);
+            UpdateTimestamp();
+        }
+    }
 }

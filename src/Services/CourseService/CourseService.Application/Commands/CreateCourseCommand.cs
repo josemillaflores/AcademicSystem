@@ -1,5 +1,8 @@
 using AcademicSystem.Common.Results;
+using CourseService.Domain.Entities;
+using CourseService.Domain.Interfaces;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace CourseService.Application.Commands;
 

@@ -18,6 +18,7 @@ public interface IEnrollmentRepository : IRepository<Enrollment>
     Task<IEnumerable<Enrollment>> GetByStudentIdAsync(Guid studentId, CancellationToken cancellationToken = default);
     Task<IEnumerable<Enrollment>> GetByCourseIdAsync(Guid courseId, CancellationToken cancellationToken = default);
     Task<IEnumerable<Enrollment>> GetByStatusAsync(EnrollmentStatus status, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Enrollment>> GetByPeriodAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default);
 }
 
 public interface IUnitOfWork : IDisposable

@@ -43,3 +43,17 @@ public class EnrollmentCompletedEvent : IntegrationEvent
         CourseId = courseId;
     }
 }
+
+public class EnrollmentCancelledEvent : IntegrationEvent
+{
+    public Guid EnrollmentId { get; }
+    public Guid StudentId { get; }
+    public Guid CourseId { get; }
+
+    public EnrollmentCancelledEvent(Guid enrollmentId, Guid studentId, Guid courseId)
+    {
+        EnrollmentId = enrollmentId;
+        StudentId = studentId;
+        CourseId = courseId;
+    }
+}

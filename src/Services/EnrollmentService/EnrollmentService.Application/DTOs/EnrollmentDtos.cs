@@ -18,7 +18,10 @@ public record EnrollmentDto(
     List<EnrollmentValidationDto> Validations,
     DateTime CreatedAt,
     DateTime? UpdatedAt
-);
+)
+{
+    public EnrollmentDto() : this(Guid.Empty, Guid.Empty, string.Empty, string.Empty, Guid.Empty, string.Empty, string.Empty, DateTime.MinValue, string.Empty, string.Empty, null, new List<EnrollmentValidationDto>(), DateTime.MinValue, null) { }
+}
 
 /// <summary>
 /// DTO para validaciones de matrícula
@@ -28,7 +31,10 @@ public record EnrollmentValidationDto(
     bool IsValid,
     string Message,
     DateTime ValidatedAt
-);
+)
+{
+    public EnrollmentValidationDto() : this(string.Empty, false, string.Empty, DateTime.MinValue) { }
+}
 
 /// <summary>
 /// DTO para creación de matrícula

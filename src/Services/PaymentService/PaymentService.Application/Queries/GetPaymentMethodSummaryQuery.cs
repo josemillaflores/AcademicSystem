@@ -30,7 +30,7 @@ public class GetPaymentMethodSummaryQueryHandler : IRequestHandler<GetPaymentMet
                 TotalPayments: g.Count(),
                 TotalAmount: g.Sum(p => p.Amount.Amount),
                 AverageAmount: g.Average(p => p.Amount.Amount),
-                PercentageOfTotal: totalRevenue > 0 ? (double)g.Sum(p => p.Amount.Amount) / totalRevenue * 100 : 0
+                PercentageOfTotal: totalRevenue > 0 ? (double)g.Sum(p => p.Amount.Amount) / (double)totalRevenue * 100 : 0
             ));
         
         return summary;

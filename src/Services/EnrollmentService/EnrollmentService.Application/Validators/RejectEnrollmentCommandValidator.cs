@@ -1,5 +1,5 @@
+using EnrollmentService.Application.Commands;
 using FluentValidation;
-
 namespace EnrollmentService.Application.Validators;
 
 public class RejectEnrollmentCommandValidator : AbstractValidator<RejectEnrollmentCommand>

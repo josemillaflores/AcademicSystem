@@ -10,4 +10,7 @@ public record TransactionDto(
     DateTime TransactionDate,
     string Status,
     string? GatewayResponse
-);
+)
+{
+    public TransactionDto() : this(Guid.Empty, string.Empty, 0, DateTime.MinValue, string.Empty, null) { }
+}

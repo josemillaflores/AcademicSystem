@@ -10,7 +10,11 @@ public class Prerequisite : BaseEntity
     public string RequiredCourseCode { get; private set; }
     public bool IsMandatory { get; private set; }
 
-    private Prerequisite() { }
+    private Prerequisite() 
+    { 
+        RequiredCourseName = null!;
+        RequiredCourseCode = null!;
+    }
 
     public Prerequisite(Guid requiredCourseId, string requiredCourseName, string requiredCourseCode, bool isMandatory)
     {

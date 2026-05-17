@@ -13,4 +13,7 @@ public record StudentCourseDto(
     string Status,
     double? Grade,
     string? GradeLetter
-);
+)
+{
+    public StudentCourseDto() : this(Guid.Empty, Guid.Empty, string.Empty, string.Empty, 0, DateTime.MinValue, string.Empty, null, null) { }
+}

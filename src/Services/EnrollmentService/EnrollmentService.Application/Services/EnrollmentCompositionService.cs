@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Net.Http.Json;
 using EnrollmentService.Application.DTOs;
+using Microsoft.AspNetCore.Http;
 
 namespace EnrollmentService.Application.Services;
 
@@ -21,17 +22,28 @@ public class EnrollmentCompositionService : IEnrollmentCompositionService
     private readonly IEnrollmentRepository _repository;
     private readonly ILogger<EnrollmentCompositionService> _logger;
     private readonly IMapper _mapper;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
     public EnrollmentCompositionService(
         IHttpClientFactory httpClientFactory,
         IEnrollmentRepository repository,
         ILogger<EnrollmentCompositionService> logger,
-        IMapper mapper)
+        IMapper mapper,
+        IHttpContextAccessor httpContextAccessor)
     {
         _httpClientFactory = httpClientFactory;
         _repository = repository;
         _logger = logger;
         _mapper = mapper;
+        _httpContextAccessor = httpContextAccessor;
+    }
+
+    private void ConfigureAuthorization(HttpClient client)
+    {
+        if (_httpContextAccessor.HttpContext?.Request.Headers.TryGetValue("Authorization", out var authHeader) == true)
+        {
+            client.DefaultRequestHeaders.Authorization = System.Net.Http.Headers.AuthenticationHeaderValue.Parse(authHeader);
+        }
     }
 
     public async Task<EnrollmentValidationResult> ValidateEnrollmentAsync(Guid studentId, Guid courseId)
@@ -57,6 +69,7 @@ public class EnrollmentCompositionService : IEnrollmentCompositionService
         try
         {
             var client = _httpClientFactory.CreateClient("StudentService");
+            ConfigureAuthorization(client);
             var student = await client.GetFromJsonAsync<StudentInfoDto>($"/api/v1/students/{studentId}");
             
             if (student == null)
@@ -85,6 +98,7 @@ public class EnrollmentCompositionService : IEnrollmentCompositionService
         try
         {
             var client = _httpClientFactory.CreateClient("CourseService");
+            ConfigureAuthorization(client);
             var course = await client.GetFromJsonAsync<CourseInfoDto>($"/api/v1/courses/{courseId}");
             
             if (course == null)
@@ -163,11 +177,13 @@ public class EnrollmentCompositionService : IEnrollmentCompositionService
         
         // Componer información del estudiante
         var studentClient = _httpClientFactory.CreateClient("StudentService");
+        ConfigureAuthorization(studentClient);
         result.Student = await studentClient.GetFromJsonAsync<StudentInfoDto>(
             $"/api/v1/students/{enrollment.StudentId}");
         
         // Componer información del curso
         var courseClient = _httpClientFactory.CreateClient("CourseService");
+        ConfigureAuthorization(courseClient);
         result.Course = await courseClient.GetFromJsonAsync<CourseInfoDto>(
             $"/api/v1/courses/{enrollment.CourseId}");
         
@@ -179,15 +195,11 @@ public class EnrollmentCompositionService : IEnrollmentCompositionService
         _logger.LogInformation("Processing enrollment for Student {StudentId}, Course {CourseId}", 
             request.StudentId, request.CourseId);
         
-        var result = new ProcessEnrollmentResult();
-        
         // 1. Validar matrícula
         var validation = await ValidateEnrollmentAsync(request.StudentId, request.CourseId);
         if (!validation.IsValid)
         {
-            result.Success = false;
-            result.Errors = validation.Errors;
-            return result;
+            return new ProcessEnrollmentResult(false, Guid.Empty, "", validation.Errors);
         }
         
         // 2. Crear matrícula
@@ -195,12 +207,8 @@ public class EnrollmentCompositionService : IEnrollmentCompositionService
         await _repository.AddAsync(enrollment);
         await _repository.SaveChangesAsync();
         
-        result.EnrollmentId = enrollment.Id;
-        result.Success = true;
-        result.Message = "Enrollment processed successfully";
-        
-        _logger.LogInformation("Enrollment {EnrollmentId} processed successfully", result.EnrollmentId);
-        return result;
+        _logger.LogInformation("Enrollment {EnrollmentId} processed successfully", enrollment.Id);
+        return new ProcessEnrollmentResult(true, enrollment.Id, "Enrollment processed successfully", new List<string>());
     }
     
     private string GetCurrentPeriod()

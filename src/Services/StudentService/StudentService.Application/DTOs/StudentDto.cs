@@ -17,7 +17,10 @@ public record StudentDto(
     string? Phone,
     DateTime CreatedAt,
     DateTime? UpdatedAt
-);
+)
+{
+    public StudentDto() : this(Guid.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, DateTime.MinValue, string.Empty, 0, 0.0, null, DateTime.MinValue, null) { }
+}
 
 /// <summary>
 /// DTO para creación de estudiante
@@ -48,4 +51,7 @@ public record CompletedCourseDto(
     int Credits,
     double Grade,
     DateTime CompletionDate
-);
+)
+{
+    public CompletedCourseDto() : this(Guid.Empty, string.Empty, 0, 0.0, DateTime.MinValue) { }
+}

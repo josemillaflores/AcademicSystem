@@ -50,4 +50,13 @@ public class Enrollment : BaseEntity
         RejectionReason = reason;
         UpdateTimestamp();
     }
+
+    public void Cancel()
+    {
+        if (Status == EnrollmentStatus.Cancelled)
+            throw new InvalidOperationException($"Enrollment is already cancelled");
+
+        Status = EnrollmentStatus.Cancelled;
+        UpdateTimestamp();
+    }
 }

@@ -35,16 +35,19 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
             .HasColumnName("StudentNumber")
             .HasMaxLength(20);
         
-        builder.Property(p => p.Amount)
-            .HasColumnName("Amount")
-            .HasPrecision(18, 2)
-            .IsRequired();
-        
-        builder.Property(p => p.Currency)
-            .HasColumnName("Currency")
-            .HasMaxLength(3)
-            .IsRequired()
-            .HasDefaultValue("USD");
+        builder.OwnsOne(p => p.Amount, amount =>
+        {
+            amount.Property(a => a.Amount)
+                .HasColumnName("Amount")
+                .HasPrecision(18, 2)
+                .IsRequired();
+            
+            amount.Property(a => a.Currency)
+                .HasColumnName("Currency")
+                .HasMaxLength(3)
+                .IsRequired()
+                .HasDefaultValue("USD");
+        });
         
         builder.Property(p => p.PaymentDate)
             .HasColumnName("PaymentDate")

@@ -17,7 +17,10 @@ public record PaymentDto(
     string? GatewayResponse,
     List<TransactionDto> Transactions,
     DateTime CreatedAt
-);
+)
+{
+    public PaymentDto() : this(Guid.Empty, string.Empty, Guid.Empty, string.Empty, string.Empty, 0, string.Empty, DateTime.MinValue, string.Empty, string.Empty, null, new List<TransactionDto>(), DateTime.MinValue) { }
+}
 
 /// <summary>
 /// DTO para creación de pago

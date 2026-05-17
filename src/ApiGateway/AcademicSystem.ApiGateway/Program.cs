@@ -70,7 +70,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("default", policy =>
+    options.AddPolicy("academic-api-policy", policy =>
     {
         policy.RequireAuthenticatedUser();
         policy.RequireClaim("scope", "academic_api");
@@ -266,6 +266,29 @@ app.MapGet("/info", () => Results.Ok(new
     Timestamp = DateTime.UtcNow,
     Routes = app.Services.GetService<IProxyConfigProvider>()?.GetConfig().Routes.Count() ?? 0
 }));
+
+// Endpoint para generar un token de desarrollo
+app.MapGet("/token", () =>
+{
+    var tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+    var key = Encoding.UTF8.GetBytes(builder.Configuration["Auth:SecretKey"] ?? "default-secret-key-32-chars-long-minimum!");
+    var tokenDescriptor = new SecurityTokenDescriptor
+    {
+        Subject = new System.Security.Claims.ClaimsIdentity(new[]
+        {
+            new System.Security.Claims.Claim("sub", "dev-user"),
+            new System.Security.Claims.Claim("scope", "academic_api"),
+            new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, "Admin")
+        }),
+        Expires = DateTime.UtcNow.AddHours(24),
+        Issuer = builder.Configuration["Auth:Issuer"] ?? "academic_auth",
+        Audience = builder.Configuration["Auth:Audience"] ?? "academic_api",
+        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+    };
+    var token = tokenHandler.CreateToken(tokenDescriptor);
+    var tokenString = tokenHandler.WriteToken(token);
+    return Results.Ok(new { token = tokenString, type = "Bearer" });
+});
 
 // Endpoint de rutas configuradas
 app.MapGet("/routes", (IProxyConfigProvider proxyConfig) =>

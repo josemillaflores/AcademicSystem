@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PaymentService.Domain\PaymentService.Domain.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\AcademicSystem.EventBus\AcademicSystem.EventBus.csproj" />
   </ItemGroup>
 
   <ItemGroup>

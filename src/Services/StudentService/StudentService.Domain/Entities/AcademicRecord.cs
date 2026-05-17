@@ -10,7 +10,7 @@ public class AcademicRecord
     
     public double GPA { get; private set; }
     public int TotalCredits { get; private set; }
-    public int RequiredCreditsForGraduation => 180;
+    public int RequiredCreditsForGraduation { get; private set; } = 180;
     public IReadOnlyCollection<CompletedCourse> CompletedCourses => _completedCourses.AsReadOnly();
 
     public AcademicRecord()

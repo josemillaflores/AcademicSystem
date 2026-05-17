@@ -20,7 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // JWT Authentication (simplificado)
-var key = Encoding.UTF8.GetBytes("your-super-secret-key-32-chars-minimum!");
+var key = Encoding.UTF8.GetBytes("your-super-secret-key-with-at-least-32-characters-long");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -34,7 +34,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Default", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+    });
+});
 
 // MediatR
 builder.Services.AddMediatR(cfg => 

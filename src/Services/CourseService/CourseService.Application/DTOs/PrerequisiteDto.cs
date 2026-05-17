@@ -9,7 +9,10 @@ public record PrerequisiteDto(
     string RequiredCourseName,
     string RequiredCourseCode,
     bool IsMandatory
-);
+)
+{
+    public PrerequisiteDto() : this(Guid.Empty, Guid.Empty, string.Empty, string.Empty, false) { }
+}
 
 /// <summary>
 /// DTO para creación de prerrequisito

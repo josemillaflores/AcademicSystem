@@ -1,0 +1,62 @@
+## Standard .gitignore for .NET (Visual Studio & JetBrains Rider)
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto-generated files
+mono_crash.*
+
+# Build results
+[Db]in/
+[Oo]bj/
+libs/
+
+# Profiler
+*.hrf
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IDE - Rider
+.idea/
+*.sln.iml
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Docker-compose local override (optional, but keep it if not needed, we'll just ignore standard temp items)
+.dockerignore
+
+# dotnet tools / packages
+.tools/
+.nuget/
+*.nupkg
+
+# Crash reports
+*.stackdump
+
+# Local publish folders
+publish/
+/src/**/bin/
+/src/**/obj/
+/src/ApiGateway/**/bin/
+/src/ApiGateway/**/obj/
+/src/BuildingBlocks/**/bin/
+/src/BuildingBlocks/**/obj/
+/src/Services/**/bin/
+/src/Services/**/obj/
+/src/Shared/**/bin/
+/src/Shared/**/obj/

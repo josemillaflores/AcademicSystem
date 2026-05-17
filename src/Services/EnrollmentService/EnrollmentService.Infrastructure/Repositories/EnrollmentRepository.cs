@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using EnrollmentService.Domain.Entities;
+using EnrollmentService.Domain.Enums;
 using EnrollmentService.Domain.Interfaces;
 using EnrollmentService.Infrastructure.Data;
 using System.Linq.Expressions;
