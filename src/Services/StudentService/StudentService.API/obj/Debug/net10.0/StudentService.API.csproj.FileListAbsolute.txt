@@ -1,0 +1,9 @@
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\StudentService.API.csproj.AssemblyReference.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\StudentService.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\StudentService.API.AssemblyInfoInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\StudentService.API.AssemblyInfo.cs
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\StudentService.API.csproj.CoreCompileInputs.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\StudentService.API.MvcApplicationPartsAssemblyInfo.cs
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\StudentService.API.MvcApplicationPartsAssemblyInfo.cache
+D:\jose\MicroserviciosNet10\Mayo2026\AcademicSystem\src\Services\StudentService\StudentService.API\obj\Debug\net10.0\StudentService.API.sourcelink.json

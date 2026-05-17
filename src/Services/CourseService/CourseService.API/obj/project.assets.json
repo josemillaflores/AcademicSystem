@@ -76,19 +76,6 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Microsoft.AspNetCore.Cors/2.3.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/_._": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/_._": {
-            "related": ".xml"
-          }
-        }
-      },
       "Microsoft.AspNetCore.OpenApi/10.0.0": {
         "type": "package",
         "dependencies": {
@@ -172,19 +159,6 @@
         "buildMultiTargeting": {
           "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.props": {},
           "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.targets": {}
-        }
-      },
-      "Microsoft.Extensions.Diagnostics.HealthChecks/10.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net10.0/_._": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net10.0/_._": {
-            "related": ".xml"
-          }
         }
       },
       "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/10.0.0": {
@@ -584,19 +558,6 @@
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Cors/2.3.0": {
-      "sha512": "AVVAOi4oGar9+7pFYGWw5NeD8qITe+lswIawJJ64zuLpU5YYdW90ALM8XDsYjEulNLziM3qgqjoLaWpr9Ic4vQ==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.cors/2.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/Microsoft.AspNetCore.Cors.dll",
-        "lib/netstandard2.0/Microsoft.AspNetCore.Cors.xml",
-        "microsoft.aspnetcore.cors.2.3.0.nupkg.sha512",
-        "microsoft.aspnetcore.cors.nuspec"
-      ]
-    },
     "Microsoft.AspNetCore.OpenApi/10.0.0": {
       "sha512": "0aqIF1t+sA2T62LIeMtXGSiaV7keGQaJnvwwmu+htQdjCaKYARfXAeqp4nHH9y2etpilyZ/tnQzZg4Ilmo/c4Q==",
       "type": "package",
@@ -904,25 +865,6 @@
         "tools/netcoreapp2.1/GetDocument.Insider.dll",
         "tools/netcoreapp2.1/GetDocument.Insider.runtimeconfig.json",
         "tools/netcoreapp2.1/System.Diagnostics.DiagnosticSource.dll"
-      ]
-    },
-    "Microsoft.Extensions.Diagnostics.HealthChecks/10.0.0": {
-      "sha512": "4x6y2Uy+g9Ou93eBCVkG/3JCwnc2AMKhrE1iuEhXT/MzNN7co/Zt6yL+q1Srt0CnOe3iLX+sVqpJI4ZGlOPfug==",
-      "type": "package",
-      "path": "microsoft.extensions.diagnostics.healthchecks/10.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net10.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/net10.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/net462/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.HealthChecks.xml",
-        "microsoft.extensions.diagnostics.healthchecks.10.0.0.nupkg.sha512",
-        "microsoft.extensions.diagnostics.healthchecks.nuspec"
       ]
     },
     "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore/10.0.0": {
@@ -1287,13 +1229,9 @@
       "CourseService.Application >= 1.0.0",
       "CourseService.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 10.0.0",
-      "Microsoft.AspNetCore.Cors >= 2.3.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.0",
-      "Microsoft.AspNetCore.RateLimiting >= 10.0.0",
-      "Microsoft.AspNetCore.ResponseCompression >= 10.0.0",
-      "Microsoft.Extensions.Diagnostics.HealthChecks >= 10.0.0",
       "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore >= 10.0.0",
-      "Swashbuckle.AspNetCore >= 7.9.0"
+      "Swashbuckle.AspNetCore >= 8.0.0"
     ]
   },
   "packageFolders": {
@@ -1331,8 +1269,8 @@
             "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj": {
               "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Application\\CourseService.Application.csproj"
             },
-            "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj": {
-              "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj"
+            "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj": {
+              "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj"
             }
           }
         }
@@ -1357,23 +1295,7 @@
             "target": "Package",
             "version": "[10.0.0, )"
           },
-          "Microsoft.AspNetCore.Cors": {
-            "target": "Package",
-            "version": "[2.3.0, )"
-          },
           "Microsoft.AspNetCore.OpenApi": {
-            "target": "Package",
-            "version": "[10.0.0, )"
-          },
-          "Microsoft.AspNetCore.RateLimiting": {
-            "target": "Package",
-            "version": "[10.0.0, )"
-          },
-          "Microsoft.AspNetCore.ResponseCompression": {
-            "target": "Package",
-            "version": "[10.0.0, )"
-          },
-          "Microsoft.Extensions.Diagnostics.HealthChecks": {
             "target": "Package",
             "version": "[10.0.0, )"
           },
@@ -1383,7 +1305,7 @@
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
-            "version": "[7.9.0, )"
+            "version": "[8.0.0, )"
           }
         },
         "imports": [
@@ -1825,78 +1747,10 @@
   },
   "logs": [
     {
-      "code": "NU1510",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "PackageReference Microsoft.Extensions.Diagnostics.HealthChecks no se eliminará. Considere la posibilidad de quitar este paquete de las dependencias, ya que es probable que no sea necesario.",
-      "libraryId": "Microsoft.Extensions.Diagnostics.HealthChecks",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1510",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "PackageReference Microsoft.AspNetCore.RateLimiting no se eliminará. Considere la posibilidad de quitar este paquete de las dependencias, ya que es probable que no sea necesario.",
-      "libraryId": "Microsoft.AspNetCore.RateLimiting",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1510",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "PackageReference Microsoft.AspNetCore.Cors no se eliminará. Considere la posibilidad de quitar este paquete de las dependencias, ya que es probable que no sea necesario.",
-      "libraryId": "Microsoft.AspNetCore.Cors",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1510",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "PackageReference Microsoft.AspNetCore.ResponseCompression no se eliminará. Considere la posibilidad de quitar este paquete de las dependencias, ya que es probable que no sea necesario.",
-      "libraryId": "Microsoft.AspNetCore.ResponseCompression",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1603",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "CourseService.API depende de Swashbuckle.AspNetCore (>= 7.9.0), pero no se encontró Swashbuckle.AspNetCore 7.9.0. Swashbuckle.AspNetCore 8.0.0 se resolvió en su lugar.",
-      "libraryId": "Swashbuckle.AspNetCore",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "No se encuentra el paquete Microsoft.AspNetCore.RateLimiting con la versión (>= 10.0.0)\r\n  - Versiones encontradas en nuget.org: 6 [ versión más cercana: 7.0.0-rc.2.22476.2 ]\r\n  - Versiones encontradas en Microsoft Visual Studio Offline Packages: 0",
-      "libraryId": "Microsoft.AspNetCore.RateLimiting",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "No se encuentra el paquete Microsoft.AspNetCore.ResponseCompression con la versión (>= 10.0.0)\r\n  - Versiones encontradas en nuget.org: 27 [ versión más cercana: 2.3.10 ]\r\n  - Versiones encontradas en Microsoft Visual Studio Offline Packages: 0",
-      "libraryId": "Microsoft.AspNetCore.ResponseCompression",
-      "targetGraphs": [
-        "net10.0"
-      ]
-    },
-    {
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"AutoMapper\" 13.0.1 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net10.0"

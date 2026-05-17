@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj": {}
+    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj": {}
   },
   "projects": {
     "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
@@ -1416,14 +1416,14 @@
         }
       }
     },
-    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj": {
+    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
         "projectName": "EnrollmentService.Infrastructure",
-        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
+        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\obj\\",
+        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

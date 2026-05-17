@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Threading.RateLimiting;
 using StudentService.Application.Commands;
@@ -15,10 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudentService API", Version = "v1" });
-});
+builder.Services.AddSwaggerGen();
 
 var key = Encoding.UTF8.GetBytes("default-secret-key-32-chars-minimum!");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

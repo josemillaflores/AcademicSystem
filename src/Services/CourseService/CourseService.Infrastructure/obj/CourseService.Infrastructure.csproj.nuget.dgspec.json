@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj": {}
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj": {}
   },
   "projects": {
     "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\BuildingBlocks\\AcademicSystem.Common\\AcademicSystem.Common.csproj": {
@@ -1053,14 +1053,14 @@
         }
       }
     },
-    "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj": {
+    "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
+        "projectUniqueName": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
         "projectName": "CourseService.Infrastructure",
-        "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
+        "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\CourseService.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\obj\\",
+        "outputPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\CourseService\\CourseService.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

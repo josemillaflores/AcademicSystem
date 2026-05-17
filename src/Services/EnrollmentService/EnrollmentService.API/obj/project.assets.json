@@ -1954,8 +1954,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj": {
-              "projectPath": "D:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj"
+            "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj": {
+              "projectPath": "d:\\jose\\MicroserviciosNet10\\Mayo2026\\AcademicSystem\\src\\Services\\EnrollmentService\\EnrollmentService.Infrastructure\\EnrollmentService.Infrastructure.csproj"
             }
           }
         }
@@ -2463,7 +2463,7 @@
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "EnrollmentService.API depende de Serilog.Sinks.File (>= 6.1.1), pero no se encontró Serilog.Sinks.File 6.1.1. Serilog.Sinks.File 7.0.0 se resolvió en su lugar.",
+      "message": "EnrollmentService.API depends on Serilog.Sinks.File (>= 6.1.1) but Serilog.Sinks.File 6.1.1 was not found. Serilog.Sinks.File 7.0.0 was resolved instead.",
       "libraryId": "Serilog.Sinks.File",
       "targetGraphs": [
         "net10.0"
@@ -2473,7 +2473,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"AutoMapper\" 13.0.1 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net10.0"
