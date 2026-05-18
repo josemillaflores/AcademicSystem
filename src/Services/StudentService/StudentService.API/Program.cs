@@ -10,6 +10,8 @@ using StudentService.Domain.Interfaces;
 using StudentService.Infrastructure.Data;
 using StudentService.Infrastructure.Repositories;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

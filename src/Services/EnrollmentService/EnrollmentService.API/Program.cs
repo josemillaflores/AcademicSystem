@@ -15,6 +15,8 @@ using Polly;
 using Polly.Extensions.Http;
 using AcademicSystem.EventBus;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

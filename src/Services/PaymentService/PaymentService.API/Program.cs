@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +11,8 @@ using PaymentService.Infrastructure;
 using PaymentService.Infrastructure.Data;
 using PaymentService.Infrastructure.Repositories;
 using AcademicSystem.EventBus;
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var builder = WebApplication.CreateBuilder(args);
 

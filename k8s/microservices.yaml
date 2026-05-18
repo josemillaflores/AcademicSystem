@@ -27,7 +27,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app-config
-              key: ConnectionStrings__DefaultConnection
+              key: ConnectionStrings__StudentConnection
 ---
 apiVersion: v1
 kind: Service
@@ -70,7 +70,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app-config
-              key: ConnectionStrings__DefaultConnection
+              key: ConnectionStrings__CourseConnection
 ---
 apiVersion: v1
 kind: Service
@@ -113,13 +113,13 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app-config
-              key: ConnectionStrings__DefaultConnection
+              key: ConnectionStrings__EnrollmentConnection
         - name: RabbitMQ__HostName
           valueFrom:
             configMapKeyRef:
               name: app-config
               key: RabbitMQ__HostName
-        # Comunicación Sincrónica entre Microservicios (Corregido y Mapeado en K8s)
+        # Comunicación Sincrónica entre Microservicios (Mapeado en K8s)
         - name: Services__StudentService
           value: "http://studentservice-service:80"
         - name: Services__CourseService
@@ -168,7 +168,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app-config
-              key: ConnectionStrings__DefaultConnection
+              key: ConnectionStrings__PaymentConnection
         - name: RabbitMQ__HostName
           valueFrom:
             configMapKeyRef:

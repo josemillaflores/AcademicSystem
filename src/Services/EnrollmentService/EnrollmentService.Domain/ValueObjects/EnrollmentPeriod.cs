@@ -17,13 +17,13 @@ public record EnrollmentPeriod
         {
             if (semester == 1)
             {
-                StartDate = new DateTime(year, 1, 15);
-                EndDate = new DateTime(year, 6, 30);
+                StartDate = new DateTime(year, 1, 15, 0, 0, 0, DateTimeKind.Utc);
+                EndDate = new DateTime(year, 6, 30, 23, 59, 59, DateTimeKind.Utc);
             }
             else
             {
-                StartDate = new DateTime(year, 7, 15);
-                EndDate = new DateTime(year, 12, 20);
+                StartDate = new DateTime(year, 7, 15, 0, 0, 0, DateTimeKind.Utc);
+                EndDate = new DateTime(year, 12, 20, 23, 59, 59, DateTimeKind.Utc);
             }
         }
         else
