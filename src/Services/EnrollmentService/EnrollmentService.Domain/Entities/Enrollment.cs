@@ -21,7 +21,13 @@ public class Enrollment : BaseEntity
     
     public IReadOnlyCollection<EnrollmentValidation> Validations => _validations.AsReadOnly();
 
-    private Enrollment() { }
+    private Enrollment() 
+    {
+        StudentName = string.Empty;
+        StudentNumber = string.Empty;
+        CourseName = string.Empty;
+        CourseCode = string.Empty;
+    }
 
     public Enrollment(Guid studentId, Guid courseId, string periodName)
     {
@@ -30,6 +36,18 @@ public class Enrollment : BaseEntity
         EnrollmentDate = DateTime.UtcNow;
         Period = new EnrollmentPeriod(periodName);
         Status = EnrollmentStatus.Pending;
+        StudentName = string.Empty;
+        StudentNumber = string.Empty;
+        CourseName = string.Empty;
+        CourseCode = string.Empty;
+    }
+
+    public void UpdateDetails(string studentName, string studentNumber, string courseName, string courseCode)
+    {
+        StudentName = studentName;
+        StudentNumber = studentNumber;
+        CourseName = courseName;
+        CourseCode = courseCode;
     }
 
     public void Approve()

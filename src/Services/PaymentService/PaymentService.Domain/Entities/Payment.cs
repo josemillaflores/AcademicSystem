@@ -22,7 +22,7 @@ public class Payment : BaseEntity
 
     private Payment() { }
 
-    public Payment(Guid studentId, decimal amount, PaymentMethod method, string paymentNumber, string currency = "USD")
+    public Payment(Guid studentId, decimal amount, PaymentMethod method, string paymentNumber, string currency = "USD", string studentName = "Unknown", string studentNumber = "N/A")
     {
         StudentId = studentId;
         Amount = new Money(amount, currency);
@@ -30,6 +30,8 @@ public class Payment : BaseEntity
         PaymentNumber = paymentNumber;
         PaymentDate = DateTime.UtcNow;
         Status = PaymentStatus.Pending;
+        StudentName = studentName;
+        StudentNumber = studentNumber;
     }
 
     public void Process()

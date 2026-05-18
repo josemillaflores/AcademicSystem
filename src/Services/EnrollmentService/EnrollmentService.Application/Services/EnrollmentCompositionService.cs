@@ -204,6 +204,15 @@ public class EnrollmentCompositionService : IEnrollmentCompositionService
         
         // 2. Crear matrícula
         var enrollment = new Enrollment(request.StudentId, request.CourseId, GetCurrentPeriod());
+        if (validation.StudentInfo != null && validation.CourseInfo != null)
+        {
+            enrollment.UpdateDetails(
+                validation.StudentInfo.FullName,
+                validation.StudentInfo.StudentNumber,
+                validation.CourseInfo.Name,
+                validation.CourseInfo.Code
+            );
+        }
         await _repository.AddAsync(enrollment);
         await _repository.SaveChangesAsync();
         
