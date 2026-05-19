@@ -11,6 +11,7 @@ using PaymentService.Infrastructure;
 using PaymentService.Infrastructure.Data;
 using PaymentService.Infrastructure.Repositories;
 using AcademicSystem.EventBus;
+using PaymentService.Application.EventHandlers;
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
@@ -47,6 +48,7 @@ builder.Services.AddDbContext<PaymentDbContext>(options => options.UseNpgsql(bui
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSingleton<IEventBus, EventBusRabbitMQ>();
+builder.Services.AddTransient<EnrollmentApprovedIntegrationEventHandler>();
 builder.Services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 builder.Services.AddRateLimiter(options => options.AddFixedWindowLimiter("fixed", opt => { opt.PermitLimit = 100; opt.Window = TimeSpan.FromSeconds(60); }));
 builder.Services.AddHealthChecks().AddDbContextCheck<PaymentDbContext>("database");
@@ -72,5 +74,8 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<PaymentDbContext>();
     await dbContext.Database.EnsureCreatedAsync();
 }
+
+var eventBus = app.Services.GetRequiredService<IEventBus>();
+await eventBus.SubscribeAsync<EnrollmentApprovedEvent, EnrollmentApprovedIntegrationEventHandler>();
 
 await app.RunAsync();
