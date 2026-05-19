@@ -39,7 +39,6 @@ public class CompletePaymentCommandHandler : IRequestHandler<CompletePaymentComm
             
             payment.Complete(request.TransactionId, request.GatewayResponse);
             
-            await _repository.UpdateAsync(payment, cancellationToken);
             await _repository.SaveChangesAsync(cancellationToken);
             
             // Publicar evento de pago completado

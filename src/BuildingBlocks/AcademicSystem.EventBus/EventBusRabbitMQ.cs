@@ -22,7 +22,8 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
         _logger = logger;
         _handlers = new Dictionary<string, List<Type>>();
         
-        var factory = new ConnectionFactory { HostName = "rabbitmq" };
+        var hostName = Environment.GetEnvironmentVariable("RabbitMQ__HostName") ?? "rabbitmq";
+        var factory = new ConnectionFactory { HostName = hostName };
         _connection = factory.CreateConnectionAsync(CancellationToken.None).GetAwaiter().GetResult();
         _channel = _connection.CreateChannelAsync(new CreateChannelOptions(publisherConfirmationsEnabled: false, publisherConfirmationTrackingEnabled: false), CancellationToken.None).GetAwaiter().GetResult();
         

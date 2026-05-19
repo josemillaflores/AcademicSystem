@@ -66,6 +66,13 @@ public class PaymentRepository : IPaymentRepository
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
+        foreach (var entry in _context.ChangeTracker.Entries<Transaction>().ToList())
+        {
+            if (entry.State == EntityState.Modified)
+            {
+                entry.State = EntityState.Added;
+            }
+        }
         return await _context.SaveChangesAsync(cancellationToken);
     }
 
