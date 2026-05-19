@@ -10,6 +10,8 @@ using StudentService.Domain.Interfaces;
 using StudentService.Infrastructure.Data;
 using StudentService.Infrastructure.Repositories;
 
+using AcademicSystem.Common.Middleware;
+
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,6 +58,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<CorrelationIdMiddleware>();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseRateLimiter();
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();

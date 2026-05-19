@@ -13,7 +13,7 @@ using Yarp.ReverseProxy.Configuration;
 using Yarp.ReverseProxy.Transforms;
 using Yarp.ReverseProxy.Transforms.Builder;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using AcademicSystem.ApiGateway.Middleware;
+using AcademicSystem.Common.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 

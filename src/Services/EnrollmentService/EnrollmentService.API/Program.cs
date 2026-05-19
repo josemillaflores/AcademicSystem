@@ -15,6 +15,8 @@ using Polly;
 using Polly.Extensions.Http;
 using AcademicSystem.EventBus;
 using EnrollmentService.Application.EventHandlers;
+using AcademicSystem.Common.Extensions;
+using AcademicSystem.Common.Middleware;
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
@@ -59,22 +61,19 @@ builder.Services.AddHttpClient("StudentService", client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["Services:StudentService"] ?? "http://studentservice:8080");
 })
-.AddPolicyHandler(GetRetryPolicy())
-.AddPolicyHandler(GetCircuitBreakerPolicy());
+.AddResiliencePolicies();
 
 builder.Services.AddHttpClient("CourseService", client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["Services:CourseService"] ?? "http://courseservice:8080");
 })
-.AddPolicyHandler(GetRetryPolicy())
-.AddPolicyHandler(GetCircuitBreakerPolicy());
+.AddResiliencePolicies();
 
 builder.Services.AddHttpClient("PaymentService", client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["Services:PaymentService"] ?? "http://paymentservice:8080");
 })
-.AddPolicyHandler(GetRetryPolicy())
-.AddPolicyHandler(GetCircuitBreakerPolicy());
+.AddResiliencePolicies();
 
 builder.Services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 builder.Services.AddRateLimiter(options => options.AddFixedWindowLimiter("fixed", opt => { opt.PermitLimit = 100; opt.Window = TimeSpan.FromSeconds(60); }));
@@ -88,6 +87,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<CorrelationIdMiddleware>();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseRateLimiter();
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
@@ -106,17 +107,3 @@ var eventBus = app.Services.GetRequiredService<IEventBus>();
 await eventBus.SubscribeAsync<PaymentCompletedEvent, PaymentCompletedIntegrationEventHandler>();
 
 await app.RunAsync();
-
-static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy()
-{
-    return HttpPolicyExtensions
-        .HandleTransientHttpError()
-        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
-}
-
-static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()
-{
-    return HttpPolicyExtensions
-        .HandleTransientHttpError()
-        .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
-}

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PaymentService.Infrastructure\PaymentService.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\AcademicSystem.Common\AcademicSystem.Common.csproj" />
   </ItemGroup>
 
 </Project>

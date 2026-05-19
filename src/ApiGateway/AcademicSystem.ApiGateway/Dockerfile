@@ -1,9 +1,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
+# Copiar proyectos BuildingBlocks
+COPY ["src/BuildingBlocks/AcademicSystem.Common/AcademicSystem.Common.csproj", "src/BuildingBlocks/AcademicSystem.Common/"]
+
 COPY ["src/ApiGateway/AcademicSystem.ApiGateway/AcademicSystem.ApiGateway.csproj", "src/ApiGateway/AcademicSystem.ApiGateway/"]
 RUN dotnet restore "src/ApiGateway/AcademicSystem.ApiGateway/AcademicSystem.ApiGateway.csproj"
 
+COPY src/BuildingBlocks/ src/BuildingBlocks/
 COPY src/ApiGateway/AcademicSystem.ApiGateway/ src/ApiGateway/AcademicSystem.ApiGateway/
 
 WORKDIR "/src/src/ApiGateway/AcademicSystem.ApiGateway"
