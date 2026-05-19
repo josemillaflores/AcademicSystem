@@ -14,6 +14,7 @@ using EnrollmentService.Infrastructure.Repositories;
 using Polly;
 using Polly.Extensions.Http;
 using AcademicSystem.EventBus;
+using EnrollmentService.Application.EventHandlers;
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
@@ -52,6 +53,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEnrollmentCompositionService, EnrollmentCompositionService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSingleton<IEventBus, EventBusRabbitMQ>();
+builder.Services.AddTransient<PaymentCompletedIntegrationEventHandler>();
 
 builder.Services.AddHttpClient("StudentService", client =>
 {
@@ -99,6 +101,9 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<EnrollmentDbContext>();
     await dbContext.Database.EnsureCreatedAsync();
 }
+
+var eventBus = app.Services.GetRequiredService<IEventBus>();
+await eventBus.SubscribeAsync<PaymentCompletedEvent, PaymentCompletedIntegrationEventHandler>();
 
 await app.RunAsync();
 
