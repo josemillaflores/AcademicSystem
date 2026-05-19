@@ -22,7 +22,12 @@ public class EventBusRabbitMQ : IEventBus, IDisposable
         _logger = logger;
         _handlers = new Dictionary<string, List<Type>>();
         
-        var hostName = Environment.GetEnvironmentVariable("RabbitMQ__HostName") ?? "rabbitmq";
+        var hostName = Environment.GetEnvironmentVariable("RabbitMQ__HostName");
+        if (string.IsNullOrEmpty(hostName))
+        {
+            var runningInContainer = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER");
+            hostName = (runningInContainer == "true") ? "rabbitmq" : "localhost";
+        }
         var factory = new ConnectionFactory { HostName = hostName };
         _connection = factory.CreateConnectionAsync(CancellationToken.None).GetAwaiter().GetResult();
         _channel = _connection.CreateChannelAsync(new CreateChannelOptions(publisherConfirmationsEnabled: false, publisherConfirmationTrackingEnabled: false), CancellationToken.None).GetAwaiter().GetResult();
